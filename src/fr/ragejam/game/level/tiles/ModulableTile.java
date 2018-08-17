@@ -35,8 +35,14 @@ public class ModulableTile extends Tile {
 		else if(top && bot && !left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(5, 0);
 		else if(top && bot && !left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(6, 0);
 		
-		
+		else if(top && bot && !left && right && topRight && !topLeft && botRight && !botLeft) setXoYo(0, 1);
 		else if(top && bot && left && right && topRight && topLeft && botRight && botLeft) setXoYo(1, 1);
+		else if(top && bot && left && !right && topLeft && botLeft) setXoYo(2, 1);
+		else if(!top && !bot && !left && right) setXoYo(3, 1);
+		else if(top && !bot && !left && !right) setXoYo(4, 1);
+		else if(top && bot && left && !right && !topRight && topLeft && !botRight && !botLeft) setXoYo(5, 1);
+		else if(top && bot && left && !right && !topRight && !topLeft && !botRight && botLeft) setXoYo(6, 1);
+		
 		
 		Texture.tile.bind();
 		Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, SIZE, SIZE, xo, yo, 7, 7);
