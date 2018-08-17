@@ -9,15 +9,18 @@ public class MainMenu {
 	private float buttonsWidth = 150;
 	private float buttonsHeight = 40;
 	private float space = 10;
+	private Button playButton, quitButton;
 	
 	public MainMenu(){
-		new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 - buttonsHeight - space/2, buttonsWidth, buttonsHeight, "Play", new Callback<Button>() {
+		playButton = (Button) new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 - buttonsHeight - space/2, buttonsWidth, buttonsHeight, "Play", new Callback<Button>() {
 			@Override
 			public void done(Button t) {
-				
+				playButton.destroy();
+				quitButton.destroy();
+				Component.setGame(new Game());
 			}
 		}, 14).show();
-		new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 + space/2, buttonsWidth, buttonsHeight, "Exit", new Callback<Button>() {
+		quitButton = (Button) new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 + space/2, buttonsWidth, buttonsHeight, "Exit", new Callback<Button>() {
 			@Override
 			public void done(Button t) {
 				System.exit(1);

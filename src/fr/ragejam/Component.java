@@ -20,6 +20,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.util.glu.GLU;
 
+import fr.ragejam.game.Game;
 import fr.ragejam.game.MainMenu;
 import fr.ragejam.graphics.RenderableElement;
 
@@ -35,6 +36,7 @@ public class Component {
 	public static float xScroll;
 	public static float yScroll;
 	
+	private static Game game;
 	DisplayMode mode = Display.getDesktopDisplayMode();
 
 	public Component(){
@@ -49,6 +51,7 @@ public class Component {
 
 	public void update(){
 		RenderableElement.updateAll();
+		if(game != null) game.update();
 	}
 
 	public void render(){
@@ -57,6 +60,7 @@ public class Component {
 		view2D(width, height);
 		glClear(GL_COLOR_BUFFER_BIT);
 		RenderableElement.renderAll();
+		if(game != null) game.render();
 	}
 
 	public void start(){
@@ -159,6 +163,10 @@ public class Component {
 
 	public static float getYScroll(){
 		return yScroll;
+	}
+
+	public static void setGame(Game game) {
+		Component.game = game;
 	}
 
 
