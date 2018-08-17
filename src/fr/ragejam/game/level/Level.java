@@ -24,11 +24,13 @@ public class Level {
 	}
 	
 	public void render(){
-		for(Tile t : tiles) t.render();
+		List<Tile> toRender = new ArrayList<>(tiles);
+		for(Tile t : toRender) t.render();
 	}
 	
 	public void update(){
-		for(Tile t : tiles) t.update();
+		List<Tile> toUpdate = new ArrayList<>(tiles);
+		for(Tile t : toUpdate) t.update();
 	}
 	
 	public void loadLevel(){
@@ -63,6 +65,12 @@ public class Level {
 			}
 		}
 		return null;
+	}
+	
+	public void setTileAt(int x, int y, Tile tile){
+		Tile underTile = getTileAt(x, y);
+		if(underTile != null) tiles.remove(underTile);
+		if(tile != null) tiles.add(tile);
 	}
 	
 	public boolean isLoaded(){

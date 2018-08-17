@@ -1,7 +1,12 @@
 package fr.ragejam.game;
 
+import org.lwjgl.input.Mouse;
+
 import fr.ragejam.Component;
 import fr.ragejam.game.level.Level;
+import fr.ragejam.game.level.tiles.ModulableTile;
+import fr.ragejam.game.level.tiles.Tile;
+import fr.ragejam.graphics.Texture;
 
 public class Game {
 	
@@ -18,6 +23,14 @@ public class Game {
 	
 	public void update(){
 		level.update();
+		
+		if(level == null) return;
+		if(Mouse.isButtonDown(0)){
+			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, new ModulableTile(0, level, (int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, Texture.tile));
+		} else if(Mouse.isButtonDown(1)){
+			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, null);
+		}
+		
 	}
 	
 	public void translateView(float xa, float ya){

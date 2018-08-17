@@ -35,7 +35,7 @@ public class ModulableTile extends Tile {
 		else if(top && bot && !left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(5, 0);
 		else if(top && bot && !left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(6, 0);
 		
-		else if(top && bot && !left && right && topRight && !topLeft && botRight && !botLeft) setXoYo(0, 1);
+		else if(top && bot && !left && right && topRight && botRight) setXoYo(0, 1);
 		else if(top && bot && left && right && topRight && topLeft && botRight && botLeft) setXoYo(1, 1);
 		else if(top && bot && left && !right && topLeft && botLeft) setXoYo(2, 1);
 		else if(!top && !bot && !left && right) setXoYo(3, 1);
@@ -43,6 +43,41 @@ public class ModulableTile extends Tile {
 		else if(top && bot && left && !right && !topRight && topLeft && !botRight && !botLeft) setXoYo(5, 1);
 		else if(top && bot && left && !right && !topRight && !topLeft && !botRight && botLeft) setXoYo(6, 1);
 		
+		else if(top && !bot && !left && right && topRight) setXoYo(0, 2);
+		else if(top && !bot && left && right && topRight && topLeft) setXoYo(1, 2);
+		else if(top && !bot && left && !right && topLeft) setXoYo(2, 2);
+		else if(top && bot && !left && !right) setXoYo(3, 2);
+		else if(!top && !bot && left && right) setXoYo(4, 2);
+		else if(top && !bot && left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(5, 2);
+		else if(top && !bot && left && right && !topRight && topLeft && !botRight && !botLeft) setXoYo(6, 2);
+		
+		else if(top && bot && left && right && !topRight && !topLeft && !botRight && !botLeft) setXoYo(0, 3);
+		else if(top && bot && left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(1, 3);
+		else if(top && bot && left & right && !topRight && !topLeft && !botRight && botLeft) setXoYo(2, 3);
+		else if(top && bot && left && right && !topRight && topLeft && !botRight && !botLeft) setXoYo(3, 3);
+		else if(top && bot && left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(4, 3);
+		else if(!top && bot && left && right && botLeft && !botRight) setXoYo(5, 3);
+		else if(!top && bot && left && right && !botLeft && botRight) setXoYo(6, 3);
+		
+		else if(!top && !bot && !left && !right) setXoYo(0, 4);
+		else if(top && bot && left && right && botLeft && botRight && !topRight && !topLeft) setXoYo(1, 4);
+		else if(top && bot && left && right && !botLeft && botRight && topRight && !topLeft) setXoYo(2, 4);
+		else if(top && bot && left && right && !botLeft && !botRight && topRight && topLeft) setXoYo(3, 4);
+		else if(top && bot && left && right && botLeft && !botRight && !topRight && topLeft) setXoYo(4, 4);
+		
+		else if(top && bot && left && right && botLeft && botRight && topRight && !topLeft) setXoYo(0, 5);
+		else if(top && bot && left && right && botLeft && botRight && !topRight && topLeft) setXoYo(1, 5);
+		else if(top && bot && left && right && botLeft && !botRight && topRight && topLeft) setXoYo(2, 5);
+		else if(top && bot && left && right && !botLeft && botRight && topRight && topLeft) setXoYo(3, 5);
+		else if(top && bot && !left && right && !botRight && !topRight) setXoYo(4, 5);
+		else if(top && bot && left && !right && !botLeft && !topLeft) setXoYo(5, 5);
+		
+		else if(!top && bot && !left && right && !botRight) setXoYo(0, 6);
+		else if(!top && bot && left && !right && !botLeft) setXoYo(1, 6);
+		else if(top && !bot && right && !left && !topRight) setXoYo(2, 6);
+		else if(top && !bot && !right && left && !topLeft) setXoYo(3, 6);
+		else if(top && !bot && left && right && !topRight && !topLeft) setXoYo(4, 6);
+		else if(!top && bot && left && right && !botLeft && !botRight) setXoYo(5, 6);
 		
 		Texture.tile.bind();
 		Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, SIZE, SIZE, xo, yo, 7, 7);
