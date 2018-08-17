@@ -28,7 +28,7 @@ public class Button extends RenderableElement {
 	
 	public void render(){
 		Texture.button_classic.bind();
-		if(!isHighlighted()) Renderer.quadData(x, y, width, height, 0, 0, 1, 2);
+		if(isHighlighted()) Renderer.quadData(x, y, width, height, 0, 0, 1, 2);
 		else Renderer.quadData(x, y, width, height, 0, 1, 1, 2);
 		Texture.button_classic.unbind();
 		

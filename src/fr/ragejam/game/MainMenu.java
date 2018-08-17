@@ -9,7 +9,7 @@ public class MainMenu {
 	private float playButtonHeight = 40;
 	
 	public MainMenu(){
-		new Button(Component.width/2-playButtonWidth/2, Component.height/2-playButtonHeight/2, playButtonWidth, playButtonHeight, "Jouer", null, 14).show();
+		new Button(Component.width/2-playButtonWidth/2, Component.height/2-playButtonHeight/2, playButtonWidth, playButtonHeight, "Play", null, 14).show();
 	}
 
 }
