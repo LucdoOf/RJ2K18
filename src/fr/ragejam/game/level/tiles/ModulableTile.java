@@ -35,6 +35,7 @@ public class ModulableTile extends Tile {
 		else if(top && bot && !left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(5, 0);
 		else if(top && bot && !left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(6, 0);
 		
+		
 		else if(top && bot && left && right && topRight && topLeft && botRight && botLeft) setXoYo(1, 1);
 		
 		Texture.tile.bind();
