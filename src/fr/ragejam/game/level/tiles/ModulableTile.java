@@ -28,12 +28,12 @@ public class ModulableTile extends Tile {
 		boolean botLeft = getLevel().getTileAt(getX()-1, getY()+1) == null ? false : getLevel().getTileAt(getX()-1, getY()+1).getId() == getId() ? true : false;
 		
 		if(!top && bot && !left && right && botRight) setXoYo(0, 0);
-		else if(!top && bot && left && right && botRight && botLeft) setXoYo(0, 1);
-		else if(!top && bot && left && !right && botLeft) setXoYo(0, 2);
-		else if(!top && bot && !left && !right) setXoYo(0, 3);
-		else if(!top && !bot && left && !right) setXoYo(0, 4);
-		else if(top && bot && !left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(0, 5);
-		else if(top && bot && !left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(0, 6);
+		else if(!top && bot && left && right && botRight && botLeft) setXoYo(1, 0);
+		else if(!top && bot && left && !right && botLeft) setXoYo(2, 0);
+		else if(!top && bot && !left && !right) setXoYo(3, 0);
+		else if(!top && !bot && left && !right) setXoYo(4, 0);
+		else if(top && bot && !left && right && !topRight && !topLeft && botRight && !botLeft) setXoYo(5, 0);
+		else if(top && bot && !left && right && topRight && !topLeft && !botRight && !botLeft) setXoYo(6, 0);
 		
 		else if(top && bot && left && right && topRight && topLeft && botRight && botLeft) setXoYo(1, 1);
 		
