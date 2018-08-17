@@ -38,7 +38,7 @@ public class ModulableTile extends Tile {
 		else if(top && bot && left && right && topRight && topLeft && botRight && botLeft) setXoYo(1, 1);
 		
 		Texture.tile.bind();
-		Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, SIZE, SIZE, xo, yo, 6, 6);
+		Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, SIZE, SIZE, xo, yo, 7, 7);
 		Texture.tile.unbind();
 		
 	}
