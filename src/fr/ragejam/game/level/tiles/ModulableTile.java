@@ -40,8 +40,8 @@ public class ModulableTile extends Tile {
 		else if(top && bot && left && !right && topLeft && botLeft) setXoYo(2, 1);
 		else if(!top && !bot && !left && right) setXoYo(3, 1);
 		else if(top && !bot && !left && !right) setXoYo(4, 1);
-		else if(top && bot && left && !right && !topRight && topLeft && !botRight && !botLeft) setXoYo(5, 1);
-		else if(top && bot && left && !right && !topRight && !topLeft && !botRight && botLeft) setXoYo(6, 1);
+		else if(top && bot && left && !right && topLeft && !botLeft) setXoYo(5, 1);
+		else if(top && bot && left && !right && !topLeft && botLeft) setXoYo(6, 1);
 		
 		else if(top && !bot && !left && right && topRight) setXoYo(0, 2);
 		else if(top && !bot && left && right && topRight && topLeft) setXoYo(1, 2);
