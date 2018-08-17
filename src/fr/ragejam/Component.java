@@ -15,13 +15,16 @@ import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glViewport;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.util.glu.GLU;
 
+import fr.ragejam.game.MainMenu;
+import fr.ragejam.graphics.RenderableElement;
 
 public class Component {
-	
+
 	public boolean running = false;
 	public static String title = "Jeu";
 	public static int scale = 4;
@@ -29,28 +32,33 @@ public class Component {
 	public static int height =  210 / scale * 2;
 	public static boolean tick = false;
 	public static boolean render = false;
+	public static float xScroll;
+	public static float yScroll;
 	
-	DisplayMode mode = new DisplayMode(width * scale, height * scale);
-	
+	DisplayMode mode = Display.getDesktopDisplayMode();
+
 	public Component(){
 		initDisplay();
+		new MainMenu();
 	}
-	
+
 	public static void main(String[] args){
 		Component main = new Component();
 		main.start();
 	}
-	
+
 	public void update(){
+		RenderableElement.updateAll();
 	}
-	
+
 	public void render(){
 		width = Display.getWidth() / scale;
 		height = Display.getHeight() / scale;
 		view2D(width, height);
 		glClear(GL_COLOR_BUFFER_BIT);
+		RenderableElement.renderAll();
 	}
-	
+
 	public void start(){
 		running = true;
 		loop();
@@ -59,12 +67,12 @@ public class Component {
 	public void stop(){
 		running = false;
 	}
-	
+
 	public void exit(){
 		Display.destroy();
 		System.exit(0);
 	}
-	
+
 	public void initDisplay(){
 		try {
 			Display.setDisplayMode(mode);
@@ -77,7 +85,7 @@ public class Component {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void view2D(int width, int height){
 		glViewport(0, 0, width * scale, height * scale);
 		glMatrixMode(GL_PROJECTION);
@@ -85,31 +93,31 @@ public class Component {
 		GLU.gluOrtho2D(0, width, height, 0);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		
+
 		glEnable(GL_TEXTURE_2D);
-		
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
-	
+
 	public void loop(){
-		
+
 		long timer = System.currentTimeMillis();
-		
+
 		long before = System.nanoTime();
 		double elapsed = 0;
 		double nanoSeconds = 1000000000.0 / 60.0;
-		
+
 		int ticks = 0;
 		int frames = 0;
-		
+
 		while(running){
 			if(Display.isCloseRequested()) stop();
 			Display.update();
-			
+
 			tick = false;
 			render = false;
-			
+
 			long now = System.nanoTime();
 			elapsed = now - before;
 
@@ -121,23 +129,37 @@ public class Component {
 				render = true;
 				frames++;
 			}
-			
+
 			if(tick) update();
 			if(render) render();
-			
+
 			if(System.currentTimeMillis() - timer > 1000){
 				timer+= 1000;
 				Display.setTitle("ticks: " + ticks + " ,fps: " + frames);
 				ticks = 0;
 				frames = 0;
 			}
-			
+
 		}
 		exit();
 	}
 
-	
-	
-	
+
+	public static float getMouseX() {
+		return Mouse.getX() / Component.scale - xScroll;
+	}
+
+	public static float getMouseY() {
+		return (Display.getHeight() - Mouse.getY()) / Component.scale - yScroll;
+	}
+
+	public static float getXScroll(){
+		return xScroll;
+	}
+
+	public static float getYScroll(){
+		return yScroll;
+	}
+
 
 }
