@@ -2,14 +2,27 @@ package fr.ragejam.game;
 
 import fr.ragejam.Component;
 import fr.ragejam.graphics.menus.Button;
+import fr.ragejam.utils.Callback;
 
 public class MainMenu {
 	
-	private float playButtonWidth = 150;
-	private float playButtonHeight = 40;
+	private float buttonsWidth = 150;
+	private float buttonsHeight = 40;
+	private float space = 10;
 	
 	public MainMenu(){
-		new Button(Component.width/2-playButtonWidth/2, Component.height/2-playButtonHeight/2, playButtonWidth, playButtonHeight, "Play", null, 14).show();
+		new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 - buttonsHeight - space/2, buttonsWidth, buttonsHeight, "Play", new Callback<Button>() {
+			@Override
+			public void done(Button t) {
+				
+			}
+		}, 14).show();
+		new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 + space/2, buttonsWidth, buttonsHeight, "Exit", new Callback<Button>() {
+			@Override
+			public void done(Button t) {
+				System.exit(1);
+			}
+		}, 14).show();
 	}
 
 }

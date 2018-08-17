@@ -77,7 +77,7 @@ public class Component {
 		try {
 			Display.setDisplayMode(mode);
 			Display.setResizable(false);
-			Display.setFullscreen(false);
+			Display.setFullscreen(true);
 			Display.setTitle(title);
 			Display.create();
 			view2D(width, height);

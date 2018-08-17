@@ -24,6 +24,7 @@ public class Button extends RenderableElement {
 		this.height = height;
 		this.text = text;
 		this.fontScale = fontScale;
+		this.callback = callback;
 	}
 	
 	public void render(){
