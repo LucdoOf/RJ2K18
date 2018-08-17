@@ -16,6 +16,7 @@ public abstract class RenderableElement {
 	public static void renderAll(){
 		List<RenderableElement> toRender = new ArrayList<>(renderableElements);
 		for(RenderableElement element : toRender){
+			if(element.isVisible())
 			element.render();
 		}
 	}
@@ -23,7 +24,8 @@ public abstract class RenderableElement {
 	public static void updateAll(){
 		List<RenderableElement> toUpdate = new ArrayList<>(renderableElements);
 		for(RenderableElement element : toUpdate){
-			element.render();
+			if(element.isVisible())
+			element.update();
 		}
 	}
 	
@@ -35,12 +37,14 @@ public abstract class RenderableElement {
 		renderableElements.remove(this);
 	}
 	
-	public void show(){
+	public RenderableElement show(){
 		visible = true;
+		return this;
 	}
 	
-	public void hide(){
+	public RenderableElement hide(){
 		visible = false;
+		return this;
 	}
 	
 	public boolean isVisible(){
