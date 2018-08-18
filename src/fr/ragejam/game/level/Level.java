@@ -78,9 +78,9 @@ public class Level {
 				} else if(pixels[x + y * width] == 0xFFC8CDCF){
 					tiles.add(new ModulableTile(6, this, x, y, Texture.tile_modulable_G));
 				} else if(pixels[x + y * width] == 0xFF656A73){
-					tiles.add(new SpikeTile(this, x, y, 1));
-				} else if(pixels[x + y * width] == 0xFF40414C){
 					tiles.add(new SpikeTile(this, x, y, 0));
+				} else if(pixels[x + y * width] == 0xFF40414C){
+					tiles.add(new SpikeTile(this, x, y, 1));
 				}
 			}
 		}
