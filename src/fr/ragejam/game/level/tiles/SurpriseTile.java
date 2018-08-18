@@ -1,5 +1,6 @@
 package fr.ragejam.game.level.tiles;
 
+import fr.ragejam.game.Game;
 import fr.ragejam.game.entities.Entity;
 import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
@@ -9,7 +10,7 @@ import fr.ragejam.graphics.Texture;
 public class SurpriseTile extends HidedTile {
 
 	public SurpriseTile(Level level, int x, int y) {
-		super(31, level, x, y, true);
+		super(31, level, x, y, false);
 	}
 
 	@Override
@@ -22,6 +23,12 @@ public class SurpriseTile extends HidedTile {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void show(){
+		super.show();
+		Game.deadSound.playAsSoundEffect(1, 1, false);
 	}
 
 	@Override
