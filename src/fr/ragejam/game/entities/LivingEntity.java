@@ -29,14 +29,14 @@ public abstract class LivingEntity extends Entity {
 		if(!isLanded()){
 			airTime++;
 
-			double futurY = (y+(Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1)/Tile.SIZE;
+			double futurY = (y+(Math.exp(airTime/20)-Math.log(airTime+20)+2)*2)/Tile.SIZE;
 			double oldY = y/Tile.SIZE;
 			double integralFutur = fr.ragejam.utils.Math.getIntegralPart(futurY);
 			double integralOld = fr.ragejam.utils.Math.getIntegralPart(oldY);
 			if(integralFutur != integralOld && getLevel().getTileAt((int)getX()/Tile.SIZE, (int)integralFutur+1) != null){
 				setXY(getX(), (float) (integralFutur*Tile.SIZE));
 			} else {
-				setXY(getX(), (float) (getY()+(Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1));
+				setXY(getX(), (float) (getY()+(Math.exp(airTime/20)-Math.log(airTime+20)+2)*2));
 			}
 		} else {
 			airTime = 0;
