@@ -50,8 +50,8 @@ public class Component {
 	}
 
 	public void update(){
-		RenderableElement.updateAll();
 		if(game != null) game.update();
+		RenderableElement.updateAll();
 	}
 
 	public void render(){
@@ -59,8 +59,8 @@ public class Component {
 		height = Display.getHeight() / scale;
 		view2D(width, height);
 		glClear(GL_COLOR_BUFFER_BIT);
-		RenderableElement.renderAll();
 		if(game != null) game.render();
+		RenderableElement.renderAll();
 	}
 
 	public void start(){

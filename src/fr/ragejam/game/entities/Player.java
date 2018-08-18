@@ -3,6 +3,8 @@ package fr.ragejam.game.entities;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
+import fr.ragejam.Component;
+import fr.ragejam.game.DeadMenu;
 import fr.ragejam.game.Game;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.Tile;
@@ -77,6 +79,7 @@ public class Player extends LivingEntity {
 				x = (float)(x+Math.sin(y)*1);
 			} else {
 				super.kill();
+				new DeadMenu().show();
 			}
 		}
 	}

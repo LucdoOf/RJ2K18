@@ -40,6 +40,7 @@ public class Texture {
 	public static final Texture gradiant = loadTexture("res/Gradient.png");
 	public static final Texture tile_spike_small = loadTexture("res/Spikes_Small.png");
 	public static final Texture tile_spike_big = loadTexture("res/Spikes_Big.png");
+	public static final Texture menu_death = loadTexture("res/Nice_Try.png");
 
 	private int width, height;
 	private int id;
