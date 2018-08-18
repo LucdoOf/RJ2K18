@@ -80,6 +80,7 @@ public class Player extends LivingEntity {
 			}
 		}
 	}
+	
 
 	@Override
 	public void kill(){
