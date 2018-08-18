@@ -85,8 +85,52 @@ public class Level {
 					tiles.add(new SpikesTile(this, x, y, 0));
 				} else if(pixels[x + y * width] == 0xFF40414C){
 					tiles.add(new SpikesTile(this, x, y, 1));
-				} else if(pixels[x + y * width] == 0xFFFF00DC){
+				} else if(pixels[x + y * width] == 0xFF262933){
+					tiles.add(new HidedSpikesTile(this, x, y, 0));
+				} else if(pixels[x + y * width] == 0xFF191A23){
 					tiles.add(new HidedSpikesTile(this, x, y, 1));
+				} else if(pixels[x + y * width] == 0xFF08E77B){
+					tiles.add(new ModulableTile(9, this, x, y, Texture.tile_modulable_2_A));
+				} else if(pixels[x + y * width] == 0xFFFFF56C){
+					tiles.add(new ModulableTile(10, this, x, y, Texture.tile_modulable_2_B));
+				} else if(pixels[x + y * width] == 0xFFFA6A39){
+					tiles.add(new ModulableTile(11, this, x, y, Texture.tile_modulable_2_C));
+				} else if(pixels[x + y * width] == 0xFFDE73DF){
+					tiles.add(new ModulableTile(12, this, x, y, Texture.tile_modulable_2_D));
+				} else if(pixels[x + y * width] == 0xFF32BBF8){
+					tiles.add(new ModulableTile(13, this, x, y, Texture.tile_modulable_2_E));
+				} else if(pixels[x + y * width] == 0xFF21E9C1){
+					tiles.add(new ModulableTile(14, this, x, y, Texture.tile_modulable_2_F));
+				} else if(pixels[x + y * width] == 0xFFBDE3E3){
+					tiles.add(new ModulableTile(15, this, x, y, Texture.tile_modulable_2_G));
+				} else if(pixels[x + y * width] == 0xFF0E9E5E){
+					tiles.add(new ModulableTile(16, this, x, y, Texture.tile_modulable_3_A));
+				} else if(pixels[x + y * width] == 0xFFEAB208){
+					tiles.add(new ModulableTile(17, this, x, y, Texture.tile_modulable_3_B));
+				} else if(pixels[x + y * width] == 0xFFBE3522){
+					tiles.add(new ModulableTile(18, this, x, y, Texture.tile_modulable_3_C));
+				} else if(pixels[x + y * width] == 0xFF8846A0){
+					tiles.add(new ModulableTile(19, this, x, y, Texture.tile_modulable_3_D));
+				} else if(pixels[x + y * width] == 0xFF2A81CB){
+					tiles.add(new ModulableTile(20, this, x, y, Texture.tile_modulable_3_E));
+				} else if(pixels[x + y * width] == 0xFF0C9D94){
+					tiles.add(new ModulableTile(21, this, x, y, Texture.tile_modulable_3_F));
+				} else if(pixels[x + y * width] == 0xFFA8B0B3){
+					tiles.add(new ModulableTile(22, this, x, y, Texture.tile_modulable_3_G));
+				} else if(pixels[x + y * width] == 0xFF0A8057){
+					tiles.add(new ModulableTile(23, this, x, y, Texture.tile_modulable_4_A));
+				} else if(pixels[x + y * width] == 0xFFE48914){
+					tiles.add(new ModulableTile(24, this, x, y, Texture.tile_modulable_4_B));
+				} else if(pixels[x + y * width] == 0xFFA22828){
+					tiles.add(new ModulableTile(25, this, x, y, Texture.tile_modulable_4_C));
+				} else if(pixels[x + y * width] == 0xFF693C81){
+					tiles.add(new ModulableTile(26, this, x, y, Texture.tile_modulable_4_D));
+				} else if(pixels[x + y * width] == 0xFF2561A5){
+					tiles.add(new ModulableTile(27, this, x, y, Texture.tile_modulable_4_E));
+				} else if(pixels[x + y * width] == 0xFF0E7079){
+					tiles.add(new ModulableTile(28, this, x, y, Texture.tile_modulable_4_F));
+				} else if(pixels[x + y * width] == 0xFF848D90){
+					tiles.add(new ModulableTile(29, this, x, y, Texture.tile_modulable_4_D));
 				}
 			}
 		}

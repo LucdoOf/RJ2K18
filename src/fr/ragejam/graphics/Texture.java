@@ -41,6 +41,27 @@ public class Texture {
 	public static final Texture tile_spike_small = loadTexture("res/Spikes_Small.png");
 	public static final Texture tile_spike_big = loadTexture("res/Spikes_Big.png");
 	public static final Texture menu_death = loadTexture("res/Nice_Try.png");
+	public static final Texture tile_modulable_2_A = loadTexture("res/Block2_A.png");
+	public static final Texture tile_modulable_2_B = loadTexture("res/Block2_B.png");
+	public static final Texture tile_modulable_2_C = loadTexture("res/Block2_C.png");
+	public static final Texture tile_modulable_2_D = loadTexture("res/Block2_D.png");
+	public static final Texture tile_modulable_2_E = loadTexture("res/Block2_E.png");
+	public static final Texture tile_modulable_2_F = loadTexture("res/Block2_F.png");
+	public static final Texture tile_modulable_2_G = loadTexture("res/Block2_G.png");
+	public static final Texture tile_modulable_3_A = loadTexture("res/Block3_A.png");
+	public static final Texture tile_modulable_3_B = loadTexture("res/Block3_B.png");
+	public static final Texture tile_modulable_3_C = loadTexture("res/Block3_C.png");
+	public static final Texture tile_modulable_3_D = loadTexture("res/Block3_D.png");
+	public static final Texture tile_modulable_3_E = loadTexture("res/Block3_E.png");
+	public static final Texture tile_modulable_3_F = loadTexture("res/Block3_F.png");
+	public static final Texture tile_modulable_3_G = loadTexture("res/Block3_G.png");
+	public static final Texture tile_modulable_4_A = loadTexture("res/Block4_A.png");
+	public static final Texture tile_modulable_4_B = loadTexture("res/Block4_B.png");
+	public static final Texture tile_modulable_4_C = loadTexture("res/Block4_C.png");
+	public static final Texture tile_modulable_4_D = loadTexture("res/Block4_D.png");
+	public static final Texture tile_modulable_4_E = loadTexture("res/Block4_E.png");
+	public static final Texture tile_modulable_4_F = loadTexture("res/Block4_F.png");
+	public static final Texture tile_modulable_4_G = loadTexture("res/Block4_G.png");
 
 	private int width, height;
 	private int id;
