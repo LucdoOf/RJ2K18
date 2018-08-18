@@ -33,8 +33,10 @@ public class Level {
 
 	public void render(){
 		Texture.background_g.bind();
-		Renderer.quadData(-Component.getXScroll() -Component.getXScroll()/3 - Component.width, -Component.getYScroll(), Component.width, Component.height-Component.getYScroll());
-		Renderer.quadData(-Component.getXScroll() -Component.getXScroll()/3, -Component.getYScroll(), Component.width, Component.height-Component.getYScroll());
+		for(int i = 0; i < 10; i++){
+			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, +Component.getYScroll()/3, Component.width, Component.height);
+			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, +Component.getYScroll()/3 + Component.height, Component.width, Component.height);
+		}
 		Texture.background_g.unbind();
 
 		List<Tile> toRender = new ArrayList<>(tiles);
