@@ -12,6 +12,7 @@ import org.lwjgl.opengl.Display;
 
 import fr.ragejam.Component;
 import fr.ragejam.game.entities.Entity;
+import fr.ragejam.game.level.tiles.BumperTile;
 import fr.ragejam.game.level.tiles.HidedSpikesTile;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.SpikesTile;
@@ -135,6 +136,8 @@ public class Level {
 					tiles.add(new ModulableTile(28, this, x, y, Texture.tile_modulable_4_F));
 				} else if(pixels[x + y * width] == 0xFF848D90){
 					tiles.add(new ModulableTile(29, this, x, y, Texture.tile_modulable_4_D));
+				} else if(pixels[x + y * width] == 0xFFFFFFFF){
+					tiles.add(new BumperTile(this, x, y));
 				}
 			}
 		}

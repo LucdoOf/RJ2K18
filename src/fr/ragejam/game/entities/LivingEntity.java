@@ -58,6 +58,10 @@ public abstract class LivingEntity extends Entity {
 	public boolean isDead(){
 		return died;
 	}
+	
+	public void removeVelocity(Velocity velocity) {
+		velocities.remove(velocity);
+	}
 
 
 }

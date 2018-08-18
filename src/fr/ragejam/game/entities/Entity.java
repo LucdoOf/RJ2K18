@@ -44,7 +44,6 @@ public abstract class Entity {
 			if(botLeft == null || botLeft != null && !botLeft.isLandable()){
 				if(topRight == null || topRight != null && !topRight.isLandable()){
 					if(botRight == null || botRight != null && !botRight.isLandable()){
-						System.out.println(topLeft + " " + botLeft + " " + topRight + " " + botRight + " " + x + " " + y + " " + (int)x/Tile.SIZE + " " + (int)y/Tile.SIZE);
 						this.x = x;
 						this.y = y;
 					}
