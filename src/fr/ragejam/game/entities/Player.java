@@ -16,8 +16,6 @@ public class Player extends LivingEntity {
 	private int width = 16, height = 16;
 	private long deadTime;
 	private long maxDeadTime = 500;
-	private long lastUpdateDeadTime;
-	private long deadDelay = 20;
 
 	public Player(Level level, float x, float y) {
 		super(EntityType.PLAYER, level, x, y);
@@ -61,10 +59,7 @@ public class Player extends LivingEntity {
 		} else {
 			if(System.currentTimeMillis()-deadTime <= maxDeadTime){
 				y--;
-				if(System.currentTimeMillis()-lastUpdateDeadTime > deadDelay){
-					lastUpdateDeadTime = System.currentTimeMillis();
-					x = (float)(x+Math.sin(y)*1);
-				}
+				x = (float)(x+Math.sin(y)*1);
 			} else {
 				super.kill();
 			}
