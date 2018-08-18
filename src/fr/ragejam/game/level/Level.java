@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import fr.ragejam.game.entities.Entity;
+import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Texture;
@@ -15,6 +17,7 @@ import fr.ragejam.graphics.Texture;
 public class Level {
 
 	private List<Tile> tiles = new ArrayList<>();
+	private List<Entity> entities = new ArrayList<>();
 	private String name;
 	private int width, height;
 	private boolean loaded = false;
@@ -26,11 +29,15 @@ public class Level {
 	public void render(){
 		List<Tile> toRender = new ArrayList<>(tiles);
 		for(Tile t : toRender) t.render();
+		List<Entity> toRender1 = new ArrayList<>(entities);
+		for(Entity t : toRender1) t.render();
 	}
 	
 	public void update(){
 		List<Tile> toUpdate = new ArrayList<>(tiles);
 		for(Tile t : toUpdate) t.update();
+		List<Entity> toUpdate1 = new ArrayList<>(entities);
+		for(Entity t : toUpdate1) t.update();
 	}
 	
 	public void loadLevel(){
@@ -75,6 +82,10 @@ public class Level {
 	
 	public boolean isLoaded(){
 		return loaded;
+	}
+
+	public void addEntity(Entity entity) {
+		entities.add(entity);
 	}
 	
 	

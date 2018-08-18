@@ -3,6 +3,7 @@ package fr.ragejam.game;
 import org.lwjgl.input.Mouse;
 
 import fr.ragejam.Component;
+import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
@@ -15,6 +16,7 @@ public class Game {
 	public Game(){
 		this.level = new Level("level_test");
 		level.loadLevel();
+		level.addEntity(new Player(level, 20, 30));
 	}
 	
 	public void render(){

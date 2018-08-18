@@ -29,6 +29,7 @@ public class Texture {
 	public static final Texture button_classic = loadTexture("res/BoutonMenu.png");
 	public static final Texture font_classic = loadTexture("res/font.png");
 	public static final Texture tile = loadTexture("res/Block_A.png");
+	public static final Texture player_classic = loadTexture("res/OrangeMan.png");
 
 	private int width, height;
 	private int id;
