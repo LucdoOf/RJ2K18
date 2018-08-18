@@ -27,9 +27,12 @@ public class Level {
 	}
 	
 	public void render(){
-		Texture.background_g.bind();
-		Renderer.quadData(0, 0, 248, 248);
-		Texture.background_g.unbind();
+		for(int i = 0; i < 4; i++){
+			Texture.background_g.bind();
+			Renderer.quadData(i*248, 0, 248, 248);
+			Renderer.quadData(i*248, 1, 248, 248);
+			Texture.background_g.unbind();
+		}
 		
 		List<Tile> toRender = new ArrayList<>(tiles);
 		for(Tile t : toRender) t.render();
