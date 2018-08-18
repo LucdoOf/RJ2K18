@@ -61,11 +61,13 @@ public class Game {
 	}
 	
 	boolean hasInvoqued = false;
-
+	static long lastRTime;
+	
 	public void update(){
 
-		if(Keyboard.isKeyDown(Keyboard.KEY_R)){
+		if(Keyboard.isKeyDown(Keyboard.KEY_R) && System.currentTimeMillis()-lastRTime > 1000){
 			Component.setGame(new Game("level_test2"));
+			lastRTime = System.currentTimeMillis();
 		}
 
 		level.update();
