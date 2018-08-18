@@ -30,7 +30,7 @@ public class Level {
 		for(int i = 0; i < 4; i++){
 			Texture.background_g.bind();
 			Renderer.quadData(i*248, 0, 248, 248);
-			Renderer.quadData(i*248, 1, 248, 248);
+			Renderer.quadData(i*248, 248, 248, 248);
 			Texture.background_g.unbind();
 		}
 		
