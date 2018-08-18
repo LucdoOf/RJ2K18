@@ -17,7 +17,8 @@ public abstract class LivingEntity extends Entity {
 	}
 
 	public boolean isLanded(){
-		return getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart((x+(Tile.SIZE-1))/Tile.SIZE), (int)(getY()/Tile.SIZE)+1) != null;
+		Tile landingTile = getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart((x+(Tile.SIZE-1))/Tile.SIZE), (int)(getY()/Tile.SIZE)+1);
+		return landingTile != null && landingTile.isLandable();
 	}
 
 	public Tile getLandingTile(){
@@ -42,16 +43,18 @@ public abstract class LivingEntity extends Entity {
 		}
 		for(Velocity v : new ArrayList<>(velocities)) v.update();
 	}
-	
+
 	public void addVelocity(Velocity v){
 		velocities.add(v);
 	}
-	
+
 	public void kill(){
-		died = true;
-		remove();
+		if(!died){
+			died = true;
+			remove();
+		}
 	}
-	
+
 	public boolean isDead(){
 		return died;
 	}

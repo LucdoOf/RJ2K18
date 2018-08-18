@@ -15,7 +15,7 @@ public class SpikesTile extends Tile {
 	private int xo = 0, yo = 0;
 
 	public SpikesTile(Level level, int x, int y, int size) {
-		super(7, level, x, y);
+		super(7, level, x, y, false);
 		this.size = size;
 	}
 

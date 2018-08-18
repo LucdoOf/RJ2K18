@@ -8,12 +8,14 @@ public abstract class Tile {
 	
 	private int id, x, y;
 	private Level level;
+	private boolean landable;
 
-	public Tile(int id, Level level, int x, int y){
+	public Tile(int id, Level level, int x, int y, boolean landable){
 		this.id = id;
 		this.x = x;
 		this.y = y;
 		this.level = level;
+		this.landable = landable;
 	}
 	
 	public abstract void render();
@@ -33,6 +35,10 @@ public abstract class Tile {
 	
 	public int getY(){
 		return y;
+	}
+
+	public boolean isLandable() {
+		return landable;
 	}
 	
 }

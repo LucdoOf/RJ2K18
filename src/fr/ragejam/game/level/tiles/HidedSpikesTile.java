@@ -25,7 +25,7 @@ public class HidedSpikesTile extends HidedTile {
 	public boolean showCondition() {
 		for(Entity e : getLevel().getEntities()){
 			if(e instanceof Player){
-				if(Math.sqrt(Math.pow(e.getX() - getX()*Tile.SIZE, 2)) <= Tile.SIZE + 2){
+				if(Math.sqrt(Math.pow(e.getX() - getX()*Tile.SIZE, 2)) <= Tile.SIZE + 1){
 					show();
 				}
 			}

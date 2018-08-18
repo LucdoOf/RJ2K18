@@ -10,7 +10,7 @@ public class ModulableTile extends Tile {
 	private int xo = 6, yo = 6;
 	
 	public ModulableTile(int id, Level level, int x, int y, Texture texture) {
-		super(id, level, x, y);
+		super(id, level, x, y, true);
 		this.texture = texture;
 	}
 
