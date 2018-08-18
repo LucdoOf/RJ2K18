@@ -26,19 +26,16 @@ public class Level {
 	private String name;
 	private int width, height;
 	private boolean loaded = false;
-	
+
 	public Level(String name){
 		this.name = name;
 	}
-	
+
 	public void render(){
-		for(int i = 0; i < 4; i++){
-			Texture.background_g.bind();
-			Renderer.quadData(i*248, 0, 248, 248);
-			Renderer.quadData(i*248, 248, 248, 248);
-			Texture.background_g.unbind();
-		}
-		
+		Texture.background_g.bind();
+		Renderer.quadData(0, 0, Component.width, Component.width);
+		Texture.background_g.unbind();
+
 		List<Tile> toRender = new ArrayList<>(tiles);
 		for(Tile t : toRender){
 			if(t.getX()*Tile.SIZE >= -Component.getXScroll() && t.getX()*Tile.SIZE < -Component.getXScroll()+Component.width)t.render();
@@ -46,7 +43,7 @@ public class Level {
 		List<Entity> toRender1 = new ArrayList<>(entities);
 		for(Entity t : toRender1) t.render();
 	}
-	
+
 	public void update(){
 		List<Tile> toUpdate = new ArrayList<>(tiles);
 		for(Tile t : toUpdate){
@@ -55,7 +52,7 @@ public class Level {
 		List<Entity> toUpdate1 = new ArrayList<>(entities);
 		for(Entity t : toUpdate1) t.update();
 	}
-	
+
 	public void loadLevel(){
 		int pixels[];
 		BufferedImage image = null;
@@ -68,7 +65,7 @@ public class Level {
 		height = image.getHeight();
 		pixels = new int[width * height];
 		image.getRGB(0, 0, width, height, pixels, 0, width);
-		
+
 		for(int x = 0; x < width; x++){
 			for(int y = 0; y < height; y++){
 				if(pixels[x + y * width] == 0xFF08C874){
@@ -138,11 +135,11 @@ public class Level {
 				}
 			}
 		}
-		
+
 		loaded = true;
-		
+
 	}
-	
+
 	public void translateView(float xa, float ya){
 		if(xa > 0) xa = 0;
 		if(ya > 0) ya = 0;
@@ -151,7 +148,7 @@ public class Level {
 		Component.xScroll = xa;
 		Component.yScroll = ya;
 	}
-	
+
 	public Tile getTileAt(int x, int y){
 		for(Tile t : tiles){
 			if(t.getX() == x && t.getY() == y){
@@ -160,25 +157,25 @@ public class Level {
 		}
 		return null;
 	}
-	
+
 	public void setTileAt(int x, int y, Tile tile){
 		Tile underTile = getTileAt(x, y);
 		if(underTile != null) tiles.remove(underTile);
 		if(tile != null) tiles.add(tile);
 	}
-	
+
 	public boolean isLoaded(){
 		return loaded;
 	}
-	
+
 	public int getWidth(){
 		return width;
 	}
-	
+
 	public int getHeight(){
 		return height;
 	}
-	
+
 	public List<Entity> getEntities(){
 		return entities;
 	}
@@ -190,6 +187,6 @@ public class Level {
 	public void removeEntity(Entity entity) {
 		entities.remove(entity);
 	}
-	
-	
+
+
 }
