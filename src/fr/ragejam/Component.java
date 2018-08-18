@@ -169,5 +169,6 @@ public class Component {
 		Component.game = game;
 	}
 
+	
 
 }
