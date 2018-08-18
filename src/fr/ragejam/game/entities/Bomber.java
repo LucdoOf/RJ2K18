@@ -39,7 +39,7 @@ public class Bomber extends LivingEntity {
 	public void update() {
 		if(!isDead()){
 			super.update();
-			setXY(getX()-2, getY());
+			setXY(getX()-4, getY());
 			if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 				lastUpdateTime = System.currentTimeMillis();
 				if(xo == 0) xo = 3;

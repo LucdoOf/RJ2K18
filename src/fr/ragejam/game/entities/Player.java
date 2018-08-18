@@ -44,13 +44,12 @@ public class Player extends LivingEntity {
 	public void update() {
 		if(!isDead()){
 			super.update();
-			setXY(getX()+2, getY());
+			setXY(getX()+4, getY());
 			if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 				lastUpdateTime = System.currentTimeMillis();
 				if(xo == 3) xo = 0;
 				else xo++;
 			}
-
 			if(isLanded()){
 				if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
 					Tile topTile = getLevel().getTileAt((int)(getX()+width/2)/Tile.SIZE, (int)getY()/Tile.SIZE-1);
