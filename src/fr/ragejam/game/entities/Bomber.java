@@ -78,6 +78,7 @@ public class Bomber extends LivingEntity {
 			died = true;
 		}
 	}
+	
 
 
 }
