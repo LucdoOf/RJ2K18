@@ -24,6 +24,7 @@ public class Player extends LivingEntity {
 
 	@Override
 	public void update() {
+		x++;
 		super.update();
 		if(System.currentTimeMillis() - lastUpdateTime > delay){
 			lastUpdateTime = System.currentTimeMillis();

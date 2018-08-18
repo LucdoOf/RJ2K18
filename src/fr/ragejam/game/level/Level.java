@@ -9,9 +9,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import fr.ragejam.game.entities.Entity;
-import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
+import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 
 public class Level {
@@ -27,6 +27,10 @@ public class Level {
 	}
 	
 	public void render(){
+		Texture.background_g.bind();
+		Renderer.quadData(0, 0, 248, 248);
+		Texture.background_g.unbind();
+		
 		List<Tile> toRender = new ArrayList<>(tiles);
 		for(Tile t : toRender) t.render();
 		List<Entity> toRender1 = new ArrayList<>(entities);

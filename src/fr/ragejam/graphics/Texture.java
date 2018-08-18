@@ -30,6 +30,7 @@ public class Texture {
 	public static final Texture font_classic = loadTexture("res/font.png");
 	public static final Texture tile = loadTexture("res/Block_A.png");
 	public static final Texture player_classic = loadTexture("res/OrangeMan.png");
+	public static final Texture background_g = loadTexture("res/BG_G.png");
 
 	private int width, height;
 	private int id;
