@@ -34,9 +34,9 @@ public abstract class LivingEntity extends Entity {
 			double integralFutur = fr.ragejam.utils.Math.getIntegralPart(futurY);
 			double integralOld = fr.ragejam.utils.Math.getIntegralPart(oldY);
 			if(integralFutur != integralOld && getLevel().getTileAt((int)getX()/Tile.SIZE, (int)integralFutur+1) != null){
-				y = (float) integralFutur*Tile.SIZE;
+				setXY(getX(), (float) (integralFutur*Tile.SIZE));
 			} else {
-				y+= (Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1;
+				setXY(getX(), (float) (getY()+(Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1));
 			}
 		} else {
 			airTime = 0;

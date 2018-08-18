@@ -12,12 +12,14 @@ import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.util.ResourceLoader;
 
 import fr.ragejam.Component;
+import fr.ragejam.game.entities.Bomber;
 import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
+import fr.ragejam.utils.Math;
 
 public class Game {
 
@@ -53,6 +55,8 @@ public class Game {
 		Renderer.quadData(-Component.getXScroll(), -Component.getYScroll(), Component.width, Component.height);
 		Texture.gradiant.unbind();
 	}
+	
+	boolean hasInvoqued = false;
 
 	public void update(){
 
@@ -67,6 +71,10 @@ public class Game {
 			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, new ModulableTile(0, level, (int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, Texture.tile_modulable_A));
 		} else if(Mouse.isButtonDown(1)){
 			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, null);
+		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_RETURN) && !hasInvoqued){
+			//hasInvoqued = true;
+			level.addEntity(new Bomber(level, Math.getIntegralPart(Component.getMouseX()), Math.getIntegralPart(Component.getMouseY())));
 		}
 	}
 

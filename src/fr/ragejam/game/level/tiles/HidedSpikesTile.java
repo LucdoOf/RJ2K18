@@ -84,7 +84,7 @@ public class HidedSpikesTile extends HidedTile {
 		super.update();
 		if(!isHided())
 		for(Entity e : new ArrayList<>(getLevel().getEntities())){
-			if(e instanceof Player){
+			if(e instanceof LivingEntity){
 				
 				if(this.equals(getLevel().getTileAt((int)(e.getX()+Tile.SIZE+1)/Tile.SIZE, (int)e.getY()/Tile.SIZE))){
 					((LivingEntity) e).kill();

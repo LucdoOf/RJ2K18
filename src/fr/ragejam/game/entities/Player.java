@@ -44,13 +44,14 @@ public class Player extends LivingEntity {
 	public void update() {
 		if(!isDead()){
 			super.update();
-			if(!isLanded()){
-				Tile detectedTile = getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart(y/Tile.SIZE)+1);
-				if(detectedTile == null || detectedTile != null && !detectedTile.isLandable()) x+=2;
-			} else {
-				Tile detectedTile = getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart((y+height/2)/Tile.SIZE));
-				if(detectedTile == null || detectedTile != null && !detectedTile.isLandable()) x+=2;
-			}
+//			if(!isLanded()){
+//				Tile detectedTile = getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart(y/Tile.SIZE)+1);
+//				if(detectedTile == null || detectedTile != null && !detectedTile.isLandable()) x+=2;
+//			} else {
+//				Tile detectedTile = getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart((y+height/2)/Tile.SIZE));
+//				if(detectedTile == null || detectedTile != null && !detectedTile.isLandable()) x+=2;
+//			}
+			setXY(getX()+2, getY());
 			if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 				lastUpdateTime = System.currentTimeMillis();
 				if(xo == 3) xo = 0;
