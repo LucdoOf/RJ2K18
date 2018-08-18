@@ -1,5 +1,6 @@
 package fr.ragejam.game.entities;
 
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import fr.ragejam.game.Game;
@@ -23,9 +24,19 @@ public class Player extends LivingEntity {
 
 	@Override
 	public void render() {
-		Texture.player_classic.bind();
-		Renderer.quadData(x, y, width, height, xo, yo, 4,3);
-		Texture.player_classic.unbind();
+		if(!isDead()){
+			float[] color = new float[]{1, 1, 1, 1};
+			Texture.player_classic.bind();
+			Renderer.quadData(x, y, width, height, color, xo, yo, 4,3);
+			Texture.player_classic.unbind();
+		} else {
+			float coef = (float)1/500;
+			float opacity = 1 - (coef * (System.currentTimeMillis()-deadTime));
+			float[] color = new float[]{1, 1, 1, opacity};
+			Texture.player_classic.bind();
+			Renderer.quadData(x, y, width, height, color, xo, yo, 4,3);
+			Texture.player_classic.unbind();
+		}
 	}
 
 	@Override
