@@ -5,7 +5,7 @@ import fr.ragejam.game.level.tiles.Tile;
 
 public abstract class LivingEntity extends Entity {
 
-	public long airTime = 0;
+	public double airTime = 0;
 	
 	public LivingEntity(EntityType type, Level level, float x, float y) {
 		super(type, level, x, y);
@@ -18,8 +18,7 @@ public abstract class LivingEntity extends Entity {
 	public void update(){
 		if(!isLanded()){
 			airTime++;
-			if(airTime == 0) airTime = 1;
-			y+= Math.log(airTime)/2;
+			y+= Math.exp(airTime/20)-Math.log(airTime+20)+2;
 		} else airTime = 0;
 	}
 	
