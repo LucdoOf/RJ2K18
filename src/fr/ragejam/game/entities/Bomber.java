@@ -67,6 +67,7 @@ public class Bomber extends LivingEntity {
 		}
 	}
 
+	
 
 	@Override
 	public void kill(){
