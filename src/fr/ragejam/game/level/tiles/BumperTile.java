@@ -1,5 +1,6 @@
 package fr.ragejam.game.level.tiles;
 
+import fr.ragejam.game.Game;
 import fr.ragejam.game.entities.Entity;
 import fr.ragejam.game.entities.LivingEntity;
 import fr.ragejam.game.entities.Velocity;
@@ -44,6 +45,7 @@ public class BumperTile extends Tile {
 				if(Math.sqrt(Math.pow((getX()+0.5)*Tile.SIZE - e.getX(), 2) + Math.pow((getY()+0.5)*Tile.SIZE - e.getY(), 2)) <= Tile.SIZE/2){
 					lastUpdateTime = System.currentTimeMillis();
 					enabled = true;
+					Game.jumpSound.playAsSoundEffect(1f, 1f, false);
 					((LivingEntity) e).addVelocity(new Velocity() {
 						private long jumpTime = 20;
 						@Override
