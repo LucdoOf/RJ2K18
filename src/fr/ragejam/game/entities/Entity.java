@@ -35,7 +35,7 @@ public abstract class Entity {
 		return y;
 	}
 
-	public void setXY(float x, float y){
+	public boolean setXY(float x, float y){
 		Tile topLeft = getLevel().getTileAt((int)x/Tile.SIZE, (int)y/Tile.SIZE);
 		Tile botLeft = getLevel().getTileAt((int)x/Tile.SIZE, (int)(y+Tile.SIZE-1)/Tile.SIZE);
 		Tile topRight = getLevel().getTileAt((int)(x+Tile.SIZE-1)/Tile.SIZE, (int)y/Tile.SIZE);
@@ -46,10 +46,12 @@ public abstract class Entity {
 					if(botRight == null || botRight != null && !botRight.isLandable()){
 						this.x = x;
 						this.y = y;
+						return true;
 					}
 				}
 			}
 		}
+		return false;
 	}
 
 	public void remove() {

@@ -63,7 +63,13 @@ public class Player extends LivingEntity {
 								if(jumpTime <= 0){
 									velocities.remove(this);
 								} else {
-									setXY(getX(), (float) (getY()-Math.log(jumpTime)));
+									if(!setXY(getX(), (float) (getY()-Math.log(jumpTime)))){
+										if(!setXY(getX(), (float) (getY()-(Math.log(jumpTime)/2)))){
+											if(!setXY(getX(), (float) (getY()-(Math.log(jumpTime)/4)))){
+												velocities.remove(this);
+											}
+										}
+									}
 								}
 								if(isLanded()) velocities.remove(this);
 							}

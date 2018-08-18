@@ -17,7 +17,7 @@ public class HidedSpikesTile extends HidedTile {
 	private int xo = 0, yo = 0;
 
 	public HidedSpikesTile(Level level, int x, int y, int size) {
-		super(8, level, x, y);
+		super(8, level, x, y, false);
 		this.size = size;
 	}
 
@@ -26,7 +26,7 @@ public class HidedSpikesTile extends HidedTile {
 		for(Entity e : getLevel().getEntities()){
 			if(e instanceof Player){
 				if(Math.sqrt(Math.pow(e.getX() - getX()*Tile.SIZE, 2)) <= Tile.SIZE + 1){
-					show();
+					return true;
 				}
 			}
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import fr.ragejam.game.entities.Entity;
 import fr.ragejam.game.entities.LivingEntity;
-import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
@@ -53,13 +52,12 @@ public class SpikesTile extends Tile {
 	public void update() {
 		for(Entity e : new ArrayList<>(getLevel().getEntities())){
 			if(e instanceof LivingEntity){
-				
 				if(this.equals(getLevel().getTileAt((int)(e.getX()+Tile.SIZE+1)/Tile.SIZE, (int)e.getY()/Tile.SIZE))){
 					((LivingEntity) e).kill();
 				}
 				if(size == 1 && this.equals(((LivingEntity) e).getLandingTile())){
 					((LivingEntity) e).kill();
-				} else if(size == 0 && this.equals(((LivingEntity) e).getLandingTile()) && e.getY()%1 > 0.5){
+				} else if(size == 0 && Math.sqrt(Math.pow((getX()+0.5)*Tile.SIZE - e.getX(), 2) + Math.pow((getY()+1)*Tile.SIZE - e.getY(), 2)) <= Tile.SIZE){
 					((LivingEntity) e).kill();
 				}
 			}

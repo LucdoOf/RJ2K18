@@ -6,8 +6,8 @@ public abstract class HidedTile extends Tile {
 
 	protected boolean hided = true;
 	
-	public HidedTile(int id, Level level, int x, int y) {
-		super(id, level, x, y, false);
+	public HidedTile(int id, Level level, int x, int y, boolean landable) {
+		super(id, level, x, y, landable);
 	}
 	
 	public abstract boolean showCondition();

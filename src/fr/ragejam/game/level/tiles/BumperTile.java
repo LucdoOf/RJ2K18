@@ -52,7 +52,7 @@ public class BumperTile extends Tile {
 							if(jumpTime <= 0){
 								((LivingEntity) e).removeVelocity(this);
 							} else {
-								e.setXY(e.getX(), (float) (e.getY()-Math.log(jumpTime)*2));
+								if(!e.setXY(e.getX(), (float) (e.getY()-Math.log(jumpTime)*2))) ((LivingEntity) e).removeVelocity(this);
 							}
 							if(((LivingEntity) e).isLanded()) ((LivingEntity) e).removeVelocity(this);
 						}

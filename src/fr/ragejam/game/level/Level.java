@@ -16,6 +16,7 @@ import fr.ragejam.game.level.tiles.BumperTile;
 import fr.ragejam.game.level.tiles.HidedSpikesTile;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.SpikesTile;
+import fr.ragejam.game.level.tiles.SurpriseTile;
 import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
@@ -138,6 +139,8 @@ public class Level {
 					tiles.add(new ModulableTile(29, this, x, y, Texture.tile_modulable_4_D));
 				} else if(pixels[x + y * width] == 0xFFFFFFFF){
 					tiles.add(new BumperTile(this, x, y));
+				} else if(pixels[x + y * width] == 0xFF782029){
+					tiles.add(new SurpriseTile(this, x, y));
 				}
 			}
 		}
