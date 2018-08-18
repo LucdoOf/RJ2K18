@@ -19,10 +19,12 @@ import fr.ragejam.graphics.Texture;
 
 public class Game {
 
-	private static Audio oggEffect;
+	public static Audio backgroundMusic, jumpSound, deadSound;
 	static {
 		try {
-			oggEffect = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Delight.ogg"));
+			backgroundMusic = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Delight.ogg"));
+			jumpSound = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Jump.ogg"));
+			deadSound = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Hit_Hurt.ogg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -34,8 +36,8 @@ public class Game {
 		level.loadLevel();
 		level.addEntity(new Player(level, 20, 30));
 
-		if(oggEffect != null){
-			oggEffect.playAsMusic(1, 0.2f, true);
+		if(backgroundMusic != null){
+			backgroundMusic.playAsMusic(1, 0.2f, true);
 			SoundStore.get().poll(0);
 		}
 

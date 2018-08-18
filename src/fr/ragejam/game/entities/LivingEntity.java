@@ -8,6 +8,7 @@ import fr.ragejam.game.level.tiles.Tile;
 
 public abstract class LivingEntity extends Entity {
 
+	public boolean died = false;
 	public double airTime = 0;
 	public List<Velocity> velocities = new ArrayList<>();
 
@@ -47,7 +48,12 @@ public abstract class LivingEntity extends Entity {
 	}
 	
 	public void kill(){
+		died = true;
 		remove();
+	}
+	
+	public boolean isDead(){
+		return died;
 	}
 
 
