@@ -1,5 +1,7 @@
 package fr.ragejam.game.entities;
 
+import org.lwjgl.input.Keyboard;
+
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
@@ -25,12 +27,27 @@ public class Player extends LivingEntity {
 
 	@Override
 	public void update() {
-		if(getLevel().getTileAt((int)x/Tile.SIZE+1, (int)y/Tile.SIZE) == null) x+=2;
+		if(getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart((y+height/2)/Tile.SIZE)) == null) x+=2;
 		super.update();
 		if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 			lastUpdateTime = System.currentTimeMillis();
 			if(xo == 3) xo = 0;
 			else xo++;
+		}
+		
+		if(isLanded()){
+			if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+				addVelocity(new Velocity() {
+					private long jumpTime = 20;
+					@Override
+					public void update() {
+						jumpTime--;
+						if(jumpTime <= 0) velocities.remove(this);
+						else y-=Math.log(jumpTime);
+						if(isLanded()) velocities.remove(this);
+					}
+				});
+			}
 		}
 	}
 

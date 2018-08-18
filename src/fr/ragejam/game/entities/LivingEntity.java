@@ -1,11 +1,15 @@
 package fr.ragejam.game.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.Tile;
 
 public abstract class LivingEntity extends Entity {
 
 	public double airTime = 0;
+	public List<Velocity> velocities = new ArrayList<>();
 
 	public LivingEntity(EntityType type, Level level, float x, float y) {
 		super(type, level, x, y);
@@ -35,6 +39,11 @@ public abstract class LivingEntity extends Entity {
 		} else {
 			airTime = 0;
 		}
+		for(Velocity v : new ArrayList<>(velocities)) v.update();
+	}
+	
+	public void addVelocity(Velocity v){
+		velocities.add(v);
 	}
 
 
