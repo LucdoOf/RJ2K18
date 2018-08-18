@@ -1,6 +1,7 @@
 package fr.ragejam.game.entities;
 
 import fr.ragejam.game.level.Level;
+import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 
@@ -24,9 +25,9 @@ public class Player extends LivingEntity {
 
 	@Override
 	public void update() {
-		x++;
+		if(getLevel().getTileAt((int)x/Tile.SIZE+1, (int)y/Tile.SIZE) == null) x+=2;
 		super.update();
-		if(System.currentTimeMillis() - lastUpdateTime > delay){
+		if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 			lastUpdateTime = System.currentTimeMillis();
 			if(xo == 3) xo = 0;
 			else xo++;

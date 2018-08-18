@@ -8,6 +8,7 @@ import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
+import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 
 public class Game {
@@ -22,6 +23,9 @@ public class Game {
 	
 	public void render(){
 		level.render();
+		Texture.gradiant.bind();
+		Renderer.quadData(0, 0, Component.width, Component.height);
+		Texture.gradiant.unbind();
 	}
 	
 	public void update(){

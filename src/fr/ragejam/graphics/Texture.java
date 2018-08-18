@@ -31,6 +31,7 @@ public class Texture {
 	public static final Texture tile = loadTexture("res/Block_A.png");
 	public static final Texture player_classic = loadTexture("res/OrangeMan.png");
 	public static final Texture background_g = loadTexture("res/BG_G.png");
+	public static final Texture gradiant = loadTexture("res/Gradient.png");
 
 	private int width, height;
 	private int id;
