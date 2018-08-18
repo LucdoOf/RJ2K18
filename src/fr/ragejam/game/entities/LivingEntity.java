@@ -15,15 +15,17 @@ public abstract class LivingEntity extends Entity {
 		return getLevel().getTileAt((int)getX()/Tile.SIZE, (int)(getY()/Tile.SIZE)+1) != null;
 	}
 	
+	public Tile getLandedTile(){
+		return getLevel().getTileAt((int)getX()/Tile.SIZE, (int)(getY()/Tile.SIZE)+1);
+	}
+	
 	public void update(){
 		if(!isLanded()){
 			airTime++;
-			Tile nextTile = getLevel().getTileAt((int)getX()/Tile.SIZE,  (int)(y + (Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1));
-			if(nextTile != null){
-				y=nextTile.getY()*Tile.SIZE;
-			} else
 			y+= (Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1;
-		} else airTime = 0;
+		} else {
+			airTime = 0;
+		}
 	}
 	
 	
