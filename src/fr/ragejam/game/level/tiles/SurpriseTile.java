@@ -28,7 +28,7 @@ public class SurpriseTile extends HidedTile {
 	@Override
 	public void show(){
 		super.show();
-		Game.deadSound.playAsSoundEffect(1, 1, false);
+		if(hided)Game.deadSound.playAsSoundEffect(1, 1, false);
 	}
 
 	@Override
