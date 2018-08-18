@@ -1,6 +1,5 @@
 package fr.ragejam.game.entities;
 
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import fr.ragejam.Component;
@@ -60,17 +59,25 @@ public class Player extends LivingEntity {
 
 			if(isLanded()){
 				if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
-					Game.jumpSound.playAsSoundEffect(1f, 1f, false);
-					addVelocity(new Velocity() {
-						private long jumpTime = 20;
-						@Override
-						public void update() {
-							jumpTime--;
-							if(jumpTime <= 0) velocities.remove(this);
-							else y-=Math.log(jumpTime);
-							if(isLanded()) velocities.remove(this);
-						}
-					});
+					Tile topTile = getLevel().getTileAt((int)(getX()+width/2)/Tile.SIZE, (int)getY()/Tile.SIZE-1);
+					if(topTile == null || topTile != null && !topTile.isLandable()){
+						Game.jumpSound.playAsSoundEffect(1f, 1f, false);
+						addVelocity(new Velocity() {
+							private long jumpTime = 20;
+							@Override
+							public void update() {
+								jumpTime--;
+								if(jumpTime <= 0){
+									velocities.remove(this);
+								} else {
+									Tile topTile = getLevel().getTileAt((int)(getX()+width/2)/Tile.SIZE, (int)(getY()-Math.log(jumpTime))/Tile.SIZE);
+									if(topTile == null || topTile != null && !topTile.isLandable())
+									y-=Math.log(jumpTime);
+								}
+								if(isLanded()) velocities.remove(this);
+							}
+						});
+					}
 				}
 			}
 		} else {
@@ -85,15 +92,17 @@ public class Player extends LivingEntity {
 		if(getY()>getLevel().getHeight()*Tile.SIZE) kill();
 		getLevel().translateView(-x + Component.width / 2 - width / 2, -y + Component.height / 2 - height / 2);
 	}
-	
+
 
 	@Override
 	public void kill(){
-		Game.deadSound.playAsSoundEffect(1f, 1f, false);
-		xo=0;
-		yo =2;
-		deadTime = System.currentTimeMillis();
-		died = true;
+		if(!died){
+			Game.deadSound.playAsSoundEffect(1f, 1f, false);
+			xo=0;
+			yo =2;
+			deadTime = System.currentTimeMillis();
+			died = true;
+		}
 	}
 
 
