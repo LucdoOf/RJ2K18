@@ -63,7 +63,19 @@ public class Level {
 		for(int x = 0; x < width; x++){
 			for(int y = 0; y < height; y++){
 				if(pixels[x + y * width] == 0xFF08C874){
-					tiles.add(new ModulableTile(0, this, x, y, Texture.tile));
+					tiles.add(new ModulableTile(0, this, x, y, Texture.tile_modulable_A));
+				} else if(pixels[x + y * width] == 0xFFFFE345){
+					tiles.add(new ModulableTile(1, this, x, y, Texture.tile_modulable_B));
+				} else if(pixels[x + y * width] == 0xFFE94525){
+					tiles.add(new ModulableTile(2, this, x, y, Texture.tile_modulable_C));
+				} else if(pixels[x + y * width] == 0xFFAA56B9){
+					tiles.add(new ModulableTile(3, this, x, y, Texture.tile_modulable_D));
+				} else if(pixels[x + y * width] == 0xFF2EA2EB){
+					tiles.add(new ModulableTile(4, this, x, y, Texture.tile_modulable_E));
+				} else if(pixels[x + y * width] == 0xFF12CBAF){
+					tiles.add(new ModulableTile(5, this, x, y, Texture.tile_modulable_F));
+				} else if(pixels[x + y * width] == 0xFFC8CDCF){
+					tiles.add(new ModulableTile(6, this, x, y, Texture.tile_modulable_G));
 				}
 			}
 		}

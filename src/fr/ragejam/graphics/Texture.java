@@ -28,7 +28,13 @@ public class Texture {
 	
 	public static final Texture button_classic = loadTexture("res/BoutonMenu.png");
 	public static final Texture font_classic = loadTexture("res/font.png");
-	public static final Texture tile = loadTexture("res/Block_A.png");
+	public static final Texture tile_modulable_A = loadTexture("res/Block_A.png");
+	public static final Texture tile_modulable_B = loadTexture("res/Block_B.png");
+	public static final Texture tile_modulable_C = loadTexture("res/Block_C.png");
+	public static final Texture tile_modulable_D = loadTexture("res/Block_D.png");
+	public static final Texture tile_modulable_E = loadTexture("res/Block_E.png");
+	public static final Texture tile_modulable_F = loadTexture("res/Block_F.png");
+	public static final Texture tile_modulable_G = loadTexture("res/Block_G.png");
 	public static final Texture player_classic = loadTexture("res/OrangeMan.png");
 	public static final Texture background_g = loadTexture("res/BG_G.png");
 	public static final Texture gradiant = loadTexture("res/Gradient.png");

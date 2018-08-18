@@ -15,8 +15,8 @@ public class Game {
 	
 	private Level level;
 	
-	public Game(){
-		this.level = new Level("level_test");
+	public Game(String levelname){
+		this.level = new Level(levelname);
 		level.loadLevel();
 		level.addEntity(new Player(level, 20, 30));
 	}
@@ -31,14 +31,14 @@ public class Game {
 	public void update(){
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_R)){
-			Component.setGame(new Game());
+			Component.setGame(new Game("level_test2"));
 		}
 		
 		level.update();
 		
 		if(level == null) return;
 		if(Mouse.isButtonDown(0)){
-			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, new ModulableTile(0, level, (int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, Texture.tile));
+			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, new ModulableTile(0, level, (int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, Texture.tile_modulable_A));
 		} else if(Mouse.isButtonDown(1)){
 			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, null);
 		}
