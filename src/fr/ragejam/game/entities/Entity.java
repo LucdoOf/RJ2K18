@@ -5,7 +5,7 @@ import fr.ragejam.game.level.Level;
 public abstract class Entity {
 
 	private EntityType type;
-	private float x, y;
+	public float x, y;
 	private Level level;
 	
 	public Entity(EntityType type, Level level, float x, float y){

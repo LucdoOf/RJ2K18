@@ -28,7 +28,7 @@ public class Component {
 
 	public boolean running = false;
 	public static String title = "Jeu";
-	public static int scale = 2;
+	public static int scale = 4;
 	public static int width = Display.getDesktopDisplayMode().getWidth() / scale;
 	public static int height = Display.getDesktopDisplayMode().getHeight() / scale;
 	public static boolean tick = false;

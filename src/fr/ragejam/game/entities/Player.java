@@ -18,12 +18,13 @@ public class Player extends LivingEntity {
 	@Override
 	public void render() {
 		Texture.player_classic.bind();
-		Renderer.quadData(getX(), getY(), width, height, xo, yo, 4,2);
+		Renderer.quadData(x, y, width, height, xo, yo, 4,2);
 		Texture.player_classic.unbind();
 	}
 
 	@Override
 	public void update() {
+		super.update();
 		if(System.currentTimeMillis() - lastUpdateTime > delay){
 			lastUpdateTime = System.currentTimeMillis();
 			if(xo == 3) xo = 0;
