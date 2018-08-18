@@ -39,7 +39,7 @@ public class Game {
 	public Game(String levelname){
 		this.level = new Level(levelname);
 		level.loadLevel();
-		player = new Player(level, 20, 30);
+		player = new Player(level, 0, 12*Tile.SIZE);
 		level.addEntity(player);
 
 		if(backgroundMusic != null){
