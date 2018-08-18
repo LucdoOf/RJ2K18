@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.openal.AudioLoader;
@@ -17,6 +16,7 @@ import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.Tile;
+import fr.ragejam.graphics.Font;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 import fr.ragejam.utils.Math;
@@ -24,6 +24,7 @@ import fr.ragejam.utils.Math;
 public class Game {
 
 	public static Audio backgroundMusic, jumpSound, deadSound;
+	private static Player player;
 	static {
 		try {
 			backgroundMusic = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Delight.ogg"));
@@ -38,7 +39,8 @@ public class Game {
 	public Game(String levelname){
 		this.level = new Level(levelname);
 		level.loadLevel();
-		level.addEntity(new Player(level, 20, 30));
+		player = new Player(level, 20, 30);
+		level.addEntity(player);
 
 		if(backgroundMusic != null){
 			backgroundMusic.playAsMusic(1, 0.2f, true);
@@ -54,6 +56,8 @@ public class Game {
 		Texture.gradiant.bind();
 		Renderer.quadData(-Component.getXScroll(), -Component.getYScroll(), Component.width, Component.height);
 		Texture.gradiant.unbind();
+		
+		Font.render(getScore() + "", 10 - Component.getXScroll(), 10 - Component.getYScroll(), 8, new float[]{1, 1, 1, 1});
 	}
 	
 	boolean hasInvoqued = false;
@@ -76,6 +80,10 @@ public class Game {
 			//hasInvoqued = true;
 			level.addEntity(new Bomber(level, Math.getIntegralPart(Component.getMouseX()), Math.getIntegralPart(Component.getMouseY())));
 		}
+	}
+	
+	public static int getScore(){
+		return (int)player.getX()/Tile.SIZE;
 	}
 
 }

@@ -36,7 +36,7 @@ public class Texture {
 	public static final Texture tile_modulable_F = loadTexture("res/Block_F.png");
 	public static final Texture tile_modulable_G = loadTexture("res/Block_G.png");
 	public static final Texture player_classic = loadTexture("res/OrangeMan.png");
-	public static final Texture background_g = loadTexture("res/BG_A_MEDIUM.png");
+	public static final Texture background_g = loadTexture("res/BG_A_BIG.png");
 	public static final Texture gradiant = loadTexture("res/Gradient.png");
 	public static final Texture tile_spike_small = loadTexture("res/Spikes_Small.png");
 	public static final Texture tile_spike_big = loadTexture("res/Spikes_Big.png");

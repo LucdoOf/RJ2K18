@@ -2,6 +2,7 @@ package fr.ragejam.game.entities;
 
 import fr.ragejam.game.Game;
 import fr.ragejam.game.level.Level;
+import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 
@@ -44,6 +45,14 @@ public class Bomber extends LivingEntity {
 				lastUpdateTime = System.currentTimeMillis();
 				if(xo == 0) xo = 3;
 				else xo--;
+			}
+			for(Entity e : getLevel().getEntities()){
+				if(e instanceof Player){
+					if(Math.sqrt(Math.pow(e.getX() - getX(), 2) + Math.pow(e.getY() - getY(), 2)) <= Tile.SIZE-2){
+						((Player) e).kill();
+						kill();
+					}
+				}
 			}
 		} else {
 			if(System.currentTimeMillis()-deadTime <= maxDeadTime){
