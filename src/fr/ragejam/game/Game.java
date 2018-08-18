@@ -28,7 +28,7 @@ public class Game {
 
 		try {
 			Audio oggEffect = AudioLoader.getAudio("OGG", ResourceLoader.getResourceAsStream("res/Delight.ogg"));
-			oggEffect.playAsMusic(1, 1, true);
+			oggEffect.playAsMusic(0.5f, 1f, true);
 			SoundStore.get().poll(0);
 		} catch (IOException e) {
 			e.printStackTrace();

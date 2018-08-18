@@ -27,18 +27,20 @@ public class Player extends LivingEntity {
 
 	@Override
 	public void update() {
-		if(getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart((y+height/2)/Tile.SIZE)) == null) x+=2;
 		super.update();
+		if(!isLanded()){
+			if(getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart(y/Tile.SIZE)+1) == null) x+=2;
+		} else if(getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart(x/Tile.SIZE)+1, fr.ragejam.utils.Math.getIntegralPart((y+height/2)/Tile.SIZE)) == null) x+=2;
 		if(System.currentTimeMillis() - lastUpdateTime > delay && isLanded()){
 			lastUpdateTime = System.currentTimeMillis();
 			if(xo == 3) xo = 0;
 			else xo++;
 		}
-		
+
 		if(isLanded()){
 			if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
 				addVelocity(new Velocity() {
-					private long jumpTime = 30;
+					private long jumpTime = 20;
 					@Override
 					public void update() {
 						jumpTime--;
@@ -51,5 +53,5 @@ public class Player extends LivingEntity {
 		}
 	}
 
-	
+
 }

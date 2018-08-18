@@ -40,10 +40,14 @@ public class Button extends RenderableElement {
 	public void update(){
 		if(Component.getMouseX() > x && Component.getMouseX() < x+width && Component.getMouseY() > y && Component.getMouseY() < y+height){
 			highlighted = true;
-			if(Mouse.next()){
-				if(Mouse.getEventButtonState() == false && Mouse.getEventButton() == 0){
-					callback.done(this);
-				}
+//			if(Mouse.next()){
+//				System.out.println(Mouse.getEventButtonState() + " " + Mouse.getEventButton());
+//				if(Mouse.getEventButtonState() == false && Mouse.getEventButton() == 0){
+//					callback.done(this);
+//				}
+//			}
+			if(Mouse.isButtonDown(0)){
+				callback.done(this);
 			}
 		} else highlighted = false;
 	}
