@@ -18,7 +18,7 @@ public abstract class LivingEntity extends Entity {
 	public void update(){
 		if(!isLanded()){
 			airTime++;
-			y+= Math.exp(airTime/20)-Math.log(airTime+20)+2;
+			y+= (Math.exp(airTime/20)-Math.log(airTime+20)+2)/1.1;
 		} else airTime = 0;
 	}
 	
