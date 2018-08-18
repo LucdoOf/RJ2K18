@@ -19,7 +19,7 @@ public abstract class LivingEntity extends Entity {
 		return getLevel().getTileAt(fr.ragejam.utils.Math.getIntegralPart((x+(Tile.SIZE-1))/Tile.SIZE), (int)(getY()/Tile.SIZE)+1) != null;
 	}
 
-	public Tile getLandedTile(){
+	public Tile getLandingTile(){
 		return getLevel().getTileAt((int)getX()/Tile.SIZE, (int)(getY()/Tile.SIZE)+1);
 	}
 
@@ -45,7 +45,10 @@ public abstract class LivingEntity extends Entity {
 	public void addVelocity(Velocity v){
 		velocities.add(v);
 	}
-
+	
+	public void kill(){
+		remove();
+	}
 
 
 }

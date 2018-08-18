@@ -33,6 +33,10 @@ public abstract class Entity {
 	public float getY(){
 		return y;
 	}
+
+	public void remove() {
+		getLevel().removeEntity(this);
+	}
 	
 	
 }

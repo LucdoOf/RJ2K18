@@ -107,9 +107,17 @@ public class Level {
 	public boolean isLoaded(){
 		return loaded;
 	}
+	
+	public List<Entity> getEntities(){
+		return entities;
+	}
 
 	public void addEntity(Entity entity) {
 		entities.add(entity);
+	}
+
+	public void removeEntity(Entity entity) {
+		entities.remove(entity);
 	}
 	
 	
