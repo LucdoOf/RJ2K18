@@ -45,7 +45,7 @@ public class Level {
 
 		List<Tile> toRender = new ArrayList<>(tiles);
 		for(Tile t : toRender){
-			if(t.getX()*Tile.SIZE >= -Component.getXScroll() && t.getX()*Tile.SIZE < -Component.getXScroll()+Component.width)t.render();
+			if(t.getX()*Tile.SIZE >= -Component.getXScroll()-Tile.SIZE && t.getX()*Tile.SIZE <= -Component.getXScroll()+Component.width)t.render();
 		}
 		List<Entity> toRender1 = new ArrayList<>(entities);
 		for(Entity t : toRender1) t.render();
@@ -54,7 +54,7 @@ public class Level {
 	public void update(){
 		List<Tile> toUpdate = new ArrayList<>(tiles);
 		for(Tile t : toUpdate){
-			if(t.getX()*Tile.SIZE >= -Component.getXScroll() && t.getX()*Tile.SIZE < -Component.getXScroll()+Component.width)t.update();
+			if(t.getX()*Tile.SIZE >= -Component.getXScroll()-Tile.SIZE && t.getX()*Tile.SIZE <= -Component.getXScroll()+Component.width)t.update();
 		}
 		List<Entity> toUpdate1 = new ArrayList<>(entities);
 		for(Entity t : toUpdate1) t.update();
