@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.openal.SoundStore;
@@ -45,9 +47,10 @@ public class Game {
 	}
 
 	public void render(){
+		GL11.glTranslatef(Component.xScroll, Component.yScroll, 0);
 		level.render();
 		Texture.gradiant.bind();
-		Renderer.quadData(0, 0, Component.width, Component.height);
+		Renderer.quadData(-Component.getXScroll(), -Component.getYScroll(), Component.width, Component.height);
 		Texture.gradiant.unbind();
 	}
 
@@ -65,16 +68,6 @@ public class Game {
 		} else if(Mouse.isButtonDown(1)){
 			level.setTileAt((int)Component.getMouseX()/Tile.SIZE, (int)Component.getMouseY()/Tile.SIZE, null);
 		}
-
-	}
-
-	public void translateView(float xa, float ya){
-		if(xa > 0) xa = 0;
-		if(ya > 0) ya = 0;
-		//if(level != null && xa < -level.getWidth() * 16 + 16 + Display.getWidth() / Component.scale) xa = -level.getWidth() * 16 + 16 + Display.getWidth() / Component.scale;
-		//if(level != null && ya < -level.getHeight() * 16 + 16 + Display.getHeight() / Component.scale) ya = -level.getHeight() * 16 + 16 + Display.getHeight() / Component.scale;		
-		Component.xScroll = xa;
-		Component.yScroll = ya;
 	}
 
 }

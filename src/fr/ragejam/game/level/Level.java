@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.lwjgl.opengl.Display;
+
+import fr.ragejam.Component;
 import fr.ragejam.game.entities.Entity;
 import fr.ragejam.game.level.tiles.HidedSpikesTile;
 import fr.ragejam.game.level.tiles.ModulableTile;
@@ -92,6 +95,15 @@ public class Level {
 		
 	}
 	
+	public void translateView(float xa, float ya){
+		if(xa > 0) xa = 0;
+		if(ya > 0) ya = 0;
+		if(this != null && xa < -this.getWidth() * 16 + 16 + Display.getWidth() / Component.scale) xa = -this.getWidth() * 16 + 16 + Display.getWidth() / Component.scale;
+		if(this != null && ya < -this.getHeight() * 16 + 16 + Display.getHeight() / Component.scale) ya = -this.getHeight() * 16 + 16 + Display.getHeight() / Component.scale;		
+		Component.xScroll = xa;
+		Component.yScroll = ya;
+	}
+	
 	public Tile getTileAt(int x, int y){
 		for(Tile t : tiles){
 			if(t.getX() == x && t.getY() == y){
@@ -109,6 +121,14 @@ public class Level {
 	
 	public boolean isLoaded(){
 		return loaded;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
 	}
 	
 	public List<Entity> getEntities(){

@@ -82,6 +82,7 @@ public class Player extends LivingEntity {
 				new DeadMenu().show();
 			}
 		}
+		getLevel().translateView(-x + Component.width / 2 - width / 2, -y + Component.height / 2 - height / 2);
 	}
 	
 
