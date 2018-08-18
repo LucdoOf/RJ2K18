@@ -38,7 +38,7 @@ public class Player extends LivingEntity {
 		if(isLanded()){
 			if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
 				addVelocity(new Velocity() {
-					private long jumpTime = 20;
+					private long jumpTime = 30;
 					@Override
 					public void update() {
 						jumpTime--;
