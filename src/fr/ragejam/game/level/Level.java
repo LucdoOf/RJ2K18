@@ -11,9 +11,11 @@ import javax.imageio.ImageIO;
 import org.lwjgl.opengl.Display;
 
 import fr.ragejam.Component;
+import fr.ragejam.game.entities.Bomber;
 import fr.ragejam.game.entities.Entity;
 import fr.ragejam.game.level.tiles.BumperTile;
 import fr.ragejam.game.level.tiles.HidedSpikesTile;
+import fr.ragejam.game.level.tiles.InvisibleTile;
 import fr.ragejam.game.level.tiles.ModulableTile;
 import fr.ragejam.game.level.tiles.SpikesTile;
 import fr.ragejam.game.level.tiles.SurpriseTile;
@@ -141,6 +143,10 @@ public class Level {
 					tiles.add(new BumperTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF782029){
 					tiles.add(new SurpriseTile(this, x, y));
+				} else if(pixels[x + y * width] == 0xFF1B2037){
+					tiles.add(new InvisibleTile(this, x, y));
+				} else if(pixels[x + y * width] == 0xFF102030){
+					addEntity(new Bomber(this, x, y));
 				}
 			}
 		}
