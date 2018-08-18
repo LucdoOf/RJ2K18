@@ -9,8 +9,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import fr.ragejam.game.entities.Entity;
+import fr.ragejam.game.level.tiles.HidedSpikesTile;
 import fr.ragejam.game.level.tiles.ModulableTile;
-import fr.ragejam.game.level.tiles.SpikeTile;
+import fr.ragejam.game.level.tiles.SpikesTile;
 import fr.ragejam.game.level.tiles.Tile;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
@@ -78,9 +79,11 @@ public class Level {
 				} else if(pixels[x + y * width] == 0xFFC8CDCF){
 					tiles.add(new ModulableTile(6, this, x, y, Texture.tile_modulable_G));
 				} else if(pixels[x + y * width] == 0xFF656A73){
-					tiles.add(new SpikeTile(this, x, y, 0));
+					tiles.add(new SpikesTile(this, x, y, 0));
 				} else if(pixels[x + y * width] == 0xFF40414C){
-					tiles.add(new SpikeTile(this, x, y, 1));
+					tiles.add(new SpikesTile(this, x, y, 1));
+				} else if(pixels[x + y * width] == 0xFFFF00DC){
+					tiles.add(new HidedSpikesTile(this, x, y, 1));
 				}
 			}
 		}

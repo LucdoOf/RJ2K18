@@ -9,12 +9,12 @@ import fr.ragejam.game.level.Level;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
 
-public class SpikeTile extends Tile {
+public class SpikesTile extends Tile {
 
 	private int size;
 	private int xo = 0, yo = 0;
 
-	public SpikeTile(Level level, int x, int y, int size) {
+	public SpikesTile(Level level, int x, int y, int size) {
 		super(7, level, x, y);
 		this.size = size;
 	}
