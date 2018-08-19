@@ -31,6 +31,8 @@ public class DeadMenu extends RenderableElement {
 	public void update() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_R)){
 			Component.setGame(new Game("level_test2"));
+			Component.setGame(null);
+			Component.setGame(new Game("level_test2"));
 			destroy();
 		}
 	}
