@@ -49,16 +49,14 @@ public abstract class LivingEntity extends Entity {
 	}
 
 	public void kill(){
-		if(!died){
-			died = true;
-			remove();
-		}
+		died = true;
+		remove();
 	}
 
 	public boolean isDead(){
 		return died;
 	}
-	
+
 	public void removeVelocity(Velocity velocity) {
 		velocities.remove(velocity);
 	}

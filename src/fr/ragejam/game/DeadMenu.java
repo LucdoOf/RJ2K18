@@ -11,6 +11,7 @@ public class DeadMenu extends RenderableElement {
 
 	private long deadMenuTime = System.currentTimeMillis();
 	private long deadMenuFadeInTime = 200;
+	private boolean hasPressed = false;
 
 	@Override
 	public void render() {
@@ -28,7 +29,9 @@ public class DeadMenu extends RenderableElement {
 
 	@Override
 	public void update() {
-		if(Keyboard.isKeyDown(Keyboard.KEY_R)){
+		if(Keyboard.isKeyDown(Keyboard.KEY_R) && !hasPressed){
+			System.out.println("test");
+			hasPressed = true;
 			Component.setGame(new Game("level_test2"));
 			destroy();
 		}
