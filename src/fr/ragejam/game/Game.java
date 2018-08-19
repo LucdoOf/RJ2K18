@@ -66,6 +66,7 @@ public class Game {
 		if(Keyboard.isKeyDown(Keyboard.KEY_R) && System.currentTimeMillis()-lastRTime > 1000){
 			Component.setGame(new Game("level_test2"));
 			lastRTime = System.currentTimeMillis();
+			System.out.println("Reset !");
 		}
 
 		level.update();
