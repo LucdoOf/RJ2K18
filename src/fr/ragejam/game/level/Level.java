@@ -13,6 +13,7 @@ import org.lwjgl.opengl.Display;
 import fr.ragejam.Component;
 import fr.ragejam.game.entities.Bomber;
 import fr.ragejam.game.entities.Entity;
+import fr.ragejam.game.entities.Player;
 import fr.ragejam.game.level.tiles.BumperTile;
 import fr.ragejam.game.level.tiles.HidedSpikesTile;
 import fr.ragejam.game.level.tiles.InvisibleTile;
@@ -36,6 +37,7 @@ public class Level {
 	}
 
 	public void render(){
+		if(!isLoaded()) return;
 		Texture.background_g.bind();
 		for(int i = 0; i < 10; i++){
 			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, 0, Component.width, Component.height);
@@ -48,16 +50,21 @@ public class Level {
 			if(t.getX()*Tile.SIZE >= -Component.getXScroll()-Tile.SIZE && t.getX()*Tile.SIZE <= -Component.getXScroll()+Component.width)t.render();
 		}
 		List<Entity> toRender1 = new ArrayList<>(entities);
-		for(Entity t : toRender1) t.render();
+		for(Entity t : toRender1){
+			if((t.getX() >= -Component.getXScroll() && t .getX() <= -Component.getXScroll()+Component.width) || t instanceof Player) t.render();
+		}
 	}
 
 	public void update(){
+		if(!isLoaded()) return;
 		List<Tile> toUpdate = new ArrayList<>(tiles);
 		for(Tile t : toUpdate){
 			if(t.getX()*Tile.SIZE >= -Component.getXScroll()-Tile.SIZE && t.getX()*Tile.SIZE <= -Component.getXScroll()+Component.width)t.update();
 		}
 		List<Entity> toUpdate1 = new ArrayList<>(entities);
-		for(Entity t : toUpdate1) t.update();
+		for(Entity t : toUpdate1){
+			if((t.getX() >= -Component.getXScroll() && t .getX() <= -Component.getXScroll()+Component.width) || t instanceof Player) t.update();
+		}
 	}
 
 	public void loadLevel(){
@@ -146,7 +153,7 @@ public class Level {
 				} else if(pixels[x + y * width] == 0xFF1B2037){
 					tiles.add(new InvisibleTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF102030){
-					addEntity(new Bomber(this, x, y));
+					addEntity(new Bomber(this, x*Tile.SIZE, y*Tile.SIZE));
 				} else if(pixels[x + y * width] == 0xFF511922){
 					tiles.add(new HidedSpikesTile(this, x, y, 0, true));
 				} else if(pixels[x + y * width] == 0xFF34131A){
