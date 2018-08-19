@@ -64,6 +64,14 @@ public class HidedSpikesTile extends HidedTile {
 				xo = 0;
 				yo = 1;
 			}
+			
+			if(inverted && showTime == 0){
+				if(size == 0) Texture.tile_spike_small.bind();
+				else Texture.tile_spike_big.bind();
+				Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+				if(size == 0) Texture.tile_spike_small.unbind();
+				else Texture.tile_spike_big.unbind();
+			}
 
 			if(System.currentTimeMillis() - showTime <= animDelay){
 				if(inverted){
@@ -95,12 +103,14 @@ public class HidedSpikesTile extends HidedTile {
 						else Texture.tile_spike_big.unbind();
 					}
 				}
-			} else if(!inverted){
-				if(size == 0) Texture.tile_spike_small.bind();
-				else Texture.tile_spike_big.bind();
-				Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
-				if(size == 0) Texture.tile_spike_small.unbind();
-				else Texture.tile_spike_big.unbind();
+			} else {
+				if(!inverted){
+					if(size == 0) Texture.tile_spike_small.bind();
+					else Texture.tile_spike_big.bind();
+					Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+					if(size == 0) Texture.tile_spike_small.unbind();
+					else Texture.tile_spike_big.unbind();
+				}
 			}
 		}
 	}

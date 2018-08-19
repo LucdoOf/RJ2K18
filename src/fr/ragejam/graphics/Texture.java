@@ -65,6 +65,7 @@ public class Texture {
 	public static final Texture bomber_classic = loadTexture("res/Green_Monster.png");
 	public static final Texture tile_bumper = loadTexture("res/Bumper.png");
 	public static final Texture tile_surprise = loadTexture("res/Block_Invisible.png");
+	public static final Texture tile_surprise_bad = loadTexture("res/Block_Invisible_Bad.png");
 	
 	private int width, height;
 	private int id;

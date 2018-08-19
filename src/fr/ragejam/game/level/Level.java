@@ -142,7 +142,7 @@ public class Level {
 				} else if(pixels[x + y * width] == 0xFFFFFFFF){
 					tiles.add(new BumperTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF782029){
-					tiles.add(new SurpriseTile(this, x, y));
+					tiles.add(new SurpriseTile(this, x, y, false));
 				} else if(pixels[x + y * width] == 0xFF1B2037){
 					tiles.add(new InvisibleTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF102030){
@@ -151,6 +151,8 @@ public class Level {
 					tiles.add(new HidedSpikesTile(this, x, y, 0, true));
 				} else if(pixels[x + y * width] == 0xFF34131A){
 					tiles.add(new HidedSpikesTile(this, x, y, 1, true));
+				} else if(pixels[x + y * width] == 0xFF076146){
+					tiles.add(new SurpriseTile(this, x, y, true));
 				}
 			}
 		}
