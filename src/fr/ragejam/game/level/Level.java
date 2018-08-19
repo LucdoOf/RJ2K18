@@ -147,9 +147,9 @@ public class Level {
 					tiles.add(new InvisibleTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF102030){
 					addEntity(new Bomber(this, x, y));
-				} else if(pixels[x + y * width] == 0xFFA8B0B3){
+				} else if(pixels[x + y * width] == 0xFF53555E){
 					tiles.add(new HidedSpikesTile(this, x, y, 0, true));
-				} else if(pixels[x + y * width] == 0xFF848D90){
+				} else if(pixels[x + y * width] == 0xFF090711){
 					tiles.add(new HidedSpikesTile(this, x, y, 1, true));
 				}
 			}
