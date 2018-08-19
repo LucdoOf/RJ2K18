@@ -94,9 +94,9 @@ public class Level {
 				} else if(pixels[x + y * width] == 0xFF40414C){
 					tiles.add(new SpikesTile(this, x, y, 1));
 				} else if(pixels[x + y * width] == 0xFF262933){
-					tiles.add(new HidedSpikesTile(this, x, y, 0));
+					tiles.add(new HidedSpikesTile(this, x, y, 0, false));
 				} else if(pixels[x + y * width] == 0xFF191A23){
-					tiles.add(new HidedSpikesTile(this, x, y, 1));
+					tiles.add(new HidedSpikesTile(this, x, y, 1, false));
 				} else if(pixels[x + y * width] == 0xFF08E77B){
 					tiles.add(new ModulableTile(9, this, x, y, Texture.tile_modulable_2_A));
 				} else if(pixels[x + y * width] == 0xFFFFF56C){
@@ -147,6 +147,10 @@ public class Level {
 					tiles.add(new InvisibleTile(this, x, y));
 				} else if(pixels[x + y * width] == 0xFF102030){
 					addEntity(new Bomber(this, x, y));
+				} else if(pixels[x + y * width] == 0xFFA8B0B3){
+					tiles.add(new HidedSpikesTile(this, x, y, 0, true));
+				} else if(pixels[x + y * width] == 0xFF848D90){
+					tiles.add(new HidedSpikesTile(this, x, y, 1, true));
 				}
 			}
 		}

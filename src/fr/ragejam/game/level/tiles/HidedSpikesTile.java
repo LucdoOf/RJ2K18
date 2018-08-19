@@ -15,10 +15,12 @@ public class HidedSpikesTile extends HidedTile {
 	private long animDelay = 40;
 	private int size;
 	private int xo = 0, yo = 0;
+	private boolean inverted;
 
-	public HidedSpikesTile(Level level, int x, int y, int size) {
+	public HidedSpikesTile(Level level, int x, int y, int size, boolean inverted) {
 		super(8, level, x, y, false);
 		this.size = size;
+		this.inverted = inverted;
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class HidedSpikesTile extends HidedTile {
 
 	@Override
 	public void render() {
-		if(!isHided()){
+		if(!isHided() && !inverted || isHided() && inverted){
 
 			boolean top = getLevel().getTileAt(getX(), getY()-1) == null ? false : getLevel().getTileAt(getX(), getY()-1).getId() != getId() ? true : false;
 			boolean bot = getLevel().getTileAt(getX(), getY()+1) == null ? false : getLevel().getTileAt(getX(), getY()+1).getId() != getId() ? true : false;
@@ -64,12 +66,36 @@ public class HidedSpikesTile extends HidedTile {
 			}
 
 			if(System.currentTimeMillis() - showTime <= animDelay){
-				if(size == 0) Texture.tile_spike_small.bind();
-				else Texture.tile_spike_big.bind();
-				Renderer.quadData(getX()*Tile.SIZE, (getY()+1)*Tile.SIZE - (float)(((float)Tile.SIZE/animDelay)*(System.currentTimeMillis()-showTime)), Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
-				if(size == 0) Texture.tile_spike_small.unbind();
-				else Texture.tile_spike_big.unbind();
-			} else {
+				if(inverted){
+					if(bot){
+						if(size == 0) Texture.tile_spike_small.bind();
+						else Texture.tile_spike_big.bind();
+						Renderer.quadData(getX()*Tile.SIZE, (getY()-1)*Tile.SIZE + (float)(((float)Tile.SIZE/animDelay)*(System.currentTimeMillis()-showTime)), Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+						if(size == 0) Texture.tile_spike_small.unbind();
+						else Texture.tile_spike_big.unbind();
+					} else if(top){
+						if(size == 0) Texture.tile_spike_small.bind();
+						else Texture.tile_spike_big.bind();
+						Renderer.quadData(getX()*Tile.SIZE, (getY()+1)*Tile.SIZE - (float)(((float)Tile.SIZE/animDelay)*(System.currentTimeMillis()-showTime)), Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+						if(size == 0) Texture.tile_spike_small.unbind();
+						else Texture.tile_spike_big.unbind();
+					}
+				} else {
+					if(bot){
+						if(size == 0) Texture.tile_spike_small.bind();
+						else Texture.tile_spike_big.bind();
+						Renderer.quadData(getX()*Tile.SIZE, (getY()+1)*Tile.SIZE - (float)(((float)Tile.SIZE/animDelay)*(System.currentTimeMillis()-showTime)), Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+						if(size == 0) Texture.tile_spike_small.unbind();
+						else Texture.tile_spike_big.unbind();
+					} else if(top){
+						if(size == 0) Texture.tile_spike_small.bind();
+						else Texture.tile_spike_big.bind();
+						Renderer.quadData(getX()*Tile.SIZE, (getY()-1)*Tile.SIZE + (float)(((float)Tile.SIZE/animDelay)*(System.currentTimeMillis()-showTime)), Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
+						if(size == 0) Texture.tile_spike_small.unbind();
+						else Texture.tile_spike_big.unbind();
+					}
+				}
+			} else if(!inverted){
 				if(size == 0) Texture.tile_spike_small.bind();
 				else Texture.tile_spike_big.bind();
 				Renderer.quadData(getX()*Tile.SIZE, getY()*Tile.SIZE, Tile.SIZE, Tile.SIZE, xo, yo, 2, 2);
@@ -78,24 +104,24 @@ public class HidedSpikesTile extends HidedTile {
 			}
 		}
 	}
-	
+
 	@Override
 	public void update(){
 		super.update();
-		if(!isHided())
-		for(Entity e : new ArrayList<>(getLevel().getEntities())){
-			if(e instanceof LivingEntity){
-				
-				if(this.equals(getLevel().getTileAt((int)(e.getX()+Tile.SIZE+1)/Tile.SIZE, (int)e.getY()/Tile.SIZE))){
-					((LivingEntity) e).kill();
-				}
-				if(size == 1 && this.equals(((LivingEntity) e).getLandingTile())){
-					((LivingEntity) e).kill();
-				} else if(size == 0 && this.equals(((LivingEntity) e).getLandingTile()) && e.getY()%1 > 0.5){
-					((LivingEntity) e).kill();
+		if(!isHided() && !inverted)
+			for(Entity e : new ArrayList<>(getLevel().getEntities())){
+				if(e instanceof LivingEntity){
+
+					if(this.equals(getLevel().getTileAt((int)(e.getX()+Tile.SIZE+1)/Tile.SIZE, (int)e.getY()/Tile.SIZE))){
+						((LivingEntity) e).kill();
+					}
+					if(size == 1 && this.equals(((LivingEntity) e).getLandingTile())){
+						((LivingEntity) e).kill();
+					} else if(size == 0 && this.equals(((LivingEntity) e).getLandingTile()) && e.getY()%1 > 0.5){
+						((LivingEntity) e).kill();
+					}
 				}
 			}
-		}
 	}
 
 }
