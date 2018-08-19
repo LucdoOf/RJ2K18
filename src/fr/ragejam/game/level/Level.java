@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -31,6 +32,9 @@ public class Level {
 	private String name;
 	private int width, height;
 	private boolean loaded = false;
+	private float[] backgroundColor = {1, 1, 1, 1};
+	private int columnChanging = 0;
+	private boolean upChanging;
 
 	public Level(String name){
 		this.name = name;
@@ -40,8 +44,9 @@ public class Level {
 		if(!isLoaded()) return;
 		Texture.background_g.bind();
 		for(int i = 0; i < 10; i++){
-			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, 0, Component.width, Component.height);
-			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, Component.height, Component.width, Component.height);
+			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, 0, Component.width, Component.height, backgroundColor);
+			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, Component.height, Component.width, Component.height, backgroundColor);
+			Renderer.quadData(-Component.getXScroll() +Component.getXScroll()/3 + Component.width*i, Component.height*2, Component.width, Component.height, backgroundColor);
 		}
 		Texture.background_g.unbind();
 
@@ -56,6 +61,25 @@ public class Level {
 	}
 
 	public void update(){
+
+		if(backgroundColor[columnChanging] >= 1f || backgroundColor[columnChanging] <= 0f){
+			Random random = new Random();
+			columnChanging = random.nextInt(3-0+1)+0;
+			if(backgroundColor[columnChanging] == 1f){
+				upChanging = false;
+			} else {
+				upChanging = true;
+			}
+		}
+		if(upChanging){
+			backgroundColor[columnChanging] = backgroundColor[columnChanging] + 1/255f;
+		} else {
+			backgroundColor[columnChanging] = backgroundColor[columnChanging] - 1/255f;
+			System.out.println(1/255f);
+		}
+
+
+
 		if(!isLoaded()) return;
 		List<Tile> toUpdate = new ArrayList<>(tiles);
 		for(Tile t : toUpdate){
