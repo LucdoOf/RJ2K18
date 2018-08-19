@@ -19,7 +19,6 @@ public class DeadMenu extends RenderableElement {
 			Renderer.quadData(-Component.getXScroll(), -Component.getYScroll(), Component.width, Component.height);
 			Texture.menu_death.unbind();
 		} else {
-			System.out.println((float)1/deadMenuFadeInTime);
 			float[] color = new float[]{1, 1, 1, (float)1/deadMenuFadeInTime*(System.currentTimeMillis()-deadMenuTime)};
 			Texture.menu_death.bind();
 			Renderer.quadData(-Component.getXScroll(), -Component.getYScroll(), Component.width, Component.height, color);

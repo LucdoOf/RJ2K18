@@ -18,8 +18,6 @@ public class MainMenu {
 				playButton.destroy();
 				quitButton.destroy();
 				Component.setGame(new Game("level_test2"));
-				Component.setGame(null);
-				Component.setGame(new Game("level_test2"));
 			}
 		}, 14).show();
 		quitButton = (Button) new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 + space/2, buttonsWidth, buttonsHeight, "Exit", new Callback<Button>() {
