@@ -74,9 +74,9 @@ public class Level {
 				upChanging = true;
 			}
 		}
-		if(upChanging){
+		if(upChanging && backgroundColor[columnChanging] <= 1f){
 			backgroundColor[columnChanging] = backgroundColor[columnChanging] + 1/127f;
-		} else {
+		} else if(!upChanging && backgroundColor[columnChanging] >= 0.5f){
 			backgroundColor[columnChanging] = backgroundColor[columnChanging] - 1/127f;
 		}
 
