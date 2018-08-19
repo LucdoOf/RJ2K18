@@ -51,7 +51,7 @@ public class Level {
 		}
 		List<Entity> toRender1 = new ArrayList<>(entities);
 		for(Entity t : toRender1){
-			if((t.getX() >= -Component.getXScroll() && t .getX() <= -Component.getXScroll()+Component.width) || t instanceof Player) t.render();
+			if(t.getX() >= -Component.getXScroll() && t .getX() <= -Component.getXScroll()+Component.width) t.render();
 		}
 	}
 
@@ -116,7 +116,7 @@ public class Level {
 					tiles.add(new ModulableTile(13, this, x, y, Texture.tile_modulable_2_E));
 				} else if(pixels[x + y * width] == 0xFF21E9C1){
 					tiles.add(new ModulableTile(14, this, x, y, Texture.tile_modulable_2_F));
-				} else if(pixels[x + y * width] == 0xFFBDE3E3){
+				} else if(pixels[x + y * width] == 0xFFDDE3E3){
 					tiles.add(new ModulableTile(15, this, x, y, Texture.tile_modulable_2_G));
 				} else if(pixels[x + y * width] == 0xFF0E9E5E){
 					tiles.add(new ModulableTile(16, this, x, y, Texture.tile_modulable_3_A));

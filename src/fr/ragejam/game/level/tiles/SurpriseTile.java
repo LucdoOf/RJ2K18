@@ -1,7 +1,7 @@
 package fr.ragejam.game.level.tiles;
 
 import fr.ragejam.game.entities.Entity;
-import fr.ragejam.game.entities.Player;
+import fr.ragejam.game.entities.LivingEntity;
 import fr.ragejam.game.level.Level;
 import fr.ragejam.graphics.Renderer;
 import fr.ragejam.graphics.Texture;
@@ -9,7 +9,7 @@ import fr.ragejam.graphics.Texture;
 public class SurpriseTile extends HidedTile {
 
 	private boolean bad;
-	private Player e;
+	private LivingEntity e;
 
 	public SurpriseTile(Level level, int x, int y, boolean bad) {
 		super(31, level, x, y, true);
@@ -19,9 +19,9 @@ public class SurpriseTile extends HidedTile {
 	@Override
 	public boolean showCondition() {
 		for(Entity e : getLevel().getEntities()){
-			if(e instanceof Player){
+			if(e instanceof LivingEntity){
 				if(Math.sqrt(Math.pow(e.getX() - getX()*Tile.SIZE, 2) + Math.pow(e.getY() - getY()*Tile.SIZE, 2)) <= Tile.SIZE + 2){
-					this.e = (Player) e;
+					this.e = (LivingEntity) e;
 					return true;
 				}
 			}
