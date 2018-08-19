@@ -35,7 +35,9 @@ public class Level {
 	private float[] backgroundColor = {1, 1, 1, 1};
 	private int columnChanging = 0;
 	private boolean upChanging;
-
+	private long lastUpdateTime;
+	private long delay = 5000;
+	
 	public Level(String name){
 		this.name = name;
 	}
@@ -62,20 +64,20 @@ public class Level {
 
 	public void update(){
 
-		if(backgroundColor[columnChanging] >= 1f || backgroundColor[columnChanging] <= 0f){
+		if((backgroundColor[columnChanging] >= 1f || backgroundColor[columnChanging] <= 0.5f) && System.currentTimeMillis() - lastUpdateTime >= delay){
+			lastUpdateTime = System.currentTimeMillis();
 			Random random = new Random();
 			columnChanging = random.nextInt(3-0+1)+0;
-			if(backgroundColor[columnChanging] == 1f){
+			if(backgroundColor[columnChanging] >= 1f){
 				upChanging = false;
 			} else {
 				upChanging = true;
 			}
 		}
 		if(upChanging){
-			backgroundColor[columnChanging] = backgroundColor[columnChanging] + 1/255f;
+			backgroundColor[columnChanging] = backgroundColor[columnChanging] + 1/127f;
 		} else {
-			backgroundColor[columnChanging] = backgroundColor[columnChanging] - 1/255f;
-			System.out.println(1/255f);
+			backgroundColor[columnChanging] = backgroundColor[columnChanging] - 1/127f;
 		}
 
 
