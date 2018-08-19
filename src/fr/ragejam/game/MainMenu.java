@@ -12,6 +12,7 @@ public class MainMenu {
 	private Button playButton, quitButton;
 	
 	public MainMenu(){
+		Game.backgroundMusic.playAsMusic(1, 1, true);
 		playButton = (Button) new Button(Component.width/2-buttonsWidth/2, Component.height/2-buttonsHeight/2 - buttonsHeight - space/2, buttonsWidth, buttonsHeight, "Play", new Callback<Button>() {
 			@Override
 			public void done(Button t) {
